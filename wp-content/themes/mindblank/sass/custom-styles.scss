@@ -1,0 +1,140 @@
+//
+// LAYOUTS
+// Place all of your custom styles in here. This stylesheet is loaded last,
+// and takes precedence over all others.
+//
+// --------------------------------------------------
+
+body {
+  opacity: 0;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  color: $dark;
+  -moz-osx-font-smoothing: grayscale; // enable font-smoothing for browsers that support it
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+  -webkit-transition: opacity 250ms ease-out;
+  -moz-transition: opacity 250ms ease-out;
+  -ms-transition: opacity 250ms ease-out;
+  -o-transition: opacity 250ms ease-out;
+  transition: opacity 250ms ease-out;
+}
+
+body.fade-in {
+  opacity: 1;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1 {
+  font-weight: 900;
+}
+
+h2 {
+  font-weight: 400;
+  color: $primary;
+}
+hr {
+  width: 100%;
+}
+
+//Navigation Styles
+header.top-header {
+  padding-top: 5px;
+  font-size: 1.6em;
+  a.icons {
+    margin-right: 10px;
+  }
+
+}
+
+// Footer
+footer.footer {
+  background: $dark;
+  color: #fff;
+
+  padding-top: 40px;
+  a {
+    color: $light;
+  }
+}
+
+footer.bottom-footer {
+  min-height: 50px;
+  line-height: 50px;
+}
+
+.bypostauthor > article .fn:before {
+  content: "\f408";
+  margin: 0 2px 0 -2px;
+  position: relative;
+  top: -1px;
+}
+
+/* single post */
+
+.alignleft, img.alignleft {
+  float: left;
+
+}
+
+.alignright, img.alignright {
+  float: right;
+
+}
+
+.aligncenter, img.aligncenter {
+  float: none;
+
+}
+
+.alignnone, img.alignnone {
+  float: none;
+
+}
+
+/* sidebars and asides */
+aside.sidebar {
+  margin-top: 40px;
+  .sidebar-social {
+    font-size: 3em;
+    border-bottom: 5px solid $light;
+    svg {
+      padding: 0 5px;
+    }
+  }
+}
+
+// Pagination
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  .page-numbers {
+    background: $primary;
+    padding: 5px 10px;
+    margin: 0 2px;
+    color: #fff;
+    text-align: center;
+    flex: 1;
+    font-size: 1.4em;
+    font-weight: 500;
+    min-width: 30px;
+    white-space: nowrap;
+  }
+  .page-numbers.current {
+    background: $light;
+    color: $dark;
+  }
+  .page-numbers:first-child {
+    margin-left: 0;
+  }
+  .page-numbers:last-child {
+    margin-right: 0;
+  }
+}
+
+// Footer Styles

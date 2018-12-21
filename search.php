@@ -8,27 +8,59 @@ include 'layout/brand.php';
                 <section class="container blog">
                     <div class="row">
                         <div class="col">
-                            <h2 class="section-title">
-                                <?php echo sprintf(__('%s Search Results for ', 'mindblank'), $wp_query->found_posts);
-                                echo get_search_query(); ?>
-                            </h2>
+                           
                             <div class="row">
-                                <?php if (have_posts()):
+                                <?php
+                                $types = array('product', 'page', 'posts');
 
-                                    while (have_posts()) : the_post();
-                                        get_template_part('loop');
-                                    endwhile;
+                                foreach ($types as $type) :
+
+                                    $posts = new WP_Query(
+                                        array(
+                                            's' => $s_query,            // search query
+                                            'post_type' => $type,
+                                            'posts_per_page' => -1,     // posts per page
+                                        )
+                                    );
+
+                                    if ($posts->have_posts()) :
+                                      $found = true;
+                                        $post_type = get_post_type_object($type);
+
+                                        $post_type_label = $post_type->labels->singular_name;
 
 
-                                else :
-                                    echo '<h3 align="center">You didn\'t find anything.</h3>';
+                                        echo '<div class="row"><div class="col"><h3 class="search-label">';
+                                              echo sprintf('%s ' . $post_type_label . ' Results for ', $posts->found_posts) . $s_query;
+                                        echo '</h3></div></div>';
 
-                                endif; ?>
+
+                                        echo '<div class="row">';
+                                          while($posts->have_posts()) : $posts->the_post();
+                                            get_template_part('loop');
+                                          endwhile;
+                                        echo '</div>';
+
+                                    endif; //End if Have Posts
+
+                                endforeach; //End foreach post type
+
+                                if(!$found){
+                                  echo '<div class="row"><div class="col"><h3 class="search-label">';
+                                      echo sprintf('%s Results for ', $posts->found_posts) . $s_query;
+                                  echo '</h3></div></div>';
+                                }
+                                
+                                
+                                
+                                
+                                
+                                
+                                ?>
 
                             </div>
                         </div>
                     </div>
-                    <?php get_template_part('pagination'); ?>
                 </section>
             </div>
             <?php get_sidebar(); ?>

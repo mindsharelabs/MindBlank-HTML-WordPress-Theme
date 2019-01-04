@@ -46,7 +46,7 @@
 <body <?php body_class(); ?>>
 <!-- nav -->
 <nav id="main-nav" class="nav" role="navigation">
-    <?php mindblank_nav(); ?>
+    <?php mindblank_nav('header-menu'); ?>
 </nav>
 <div id="main-panel">
     <div class="container">

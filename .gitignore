@@ -96,6 +96,9 @@ build/Release
 ## Node dependency directory
 node_modules
 
+# Sass cache
+.sass-cache
+
 # Users Environment Variables
 .lock-wscript
 

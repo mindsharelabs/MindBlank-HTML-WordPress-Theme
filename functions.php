@@ -84,6 +84,12 @@ function mindblank_nav()
     );
 }
 
+/*  Add responsive container to embeds
+/* ------------------------------------ */
+function mind_embed_html( $html ) {
+    return '<div class="video-container">' . $html . '</div>';
+}
+
 // Load mind Blank scripts (header.php)
 function mindblank_header_scripts()
 {
@@ -264,12 +270,12 @@ function mindwp_excerpt($length_callback = '', $more_callback = '')
     echo $output;
 }
 
-function lobob_excerpt_length($length)
+function mindblank_excerpt_length($length)
 {
     return 20;
 }
 
-add_filter('excerpt_length', 'lobob_excerpt_length', 999);
+add_filter('excerpt_length', 'mindblank_excerpt_length', 999);
 
 
 // Custom View Article link to Post
@@ -312,15 +318,6 @@ function enable_threaded_comments()
 }
 
 
-/*  Add responsive container to embeds
-/* ------------------------------------ */
-function mind_embed_html( $html ) {
-    return '<div class="video-container">' . $html . '</div>';
-}
-add_filter( 'embed_oembed_html', 'mind_embed_html', 10, 3 );
-add_filter( 'video_embed_html', 'mind_embed_html' ); // Jetpack
-
-
 /*------------------------------------*\
     Actions + Filters + ShortCodes
 \*------------------------------------*/
@@ -334,7 +331,7 @@ add_action('init', 'register_mind_menu'); // Add mind Blank Menu
 
 add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
 add_action('init', 'mindwp_pagination'); // Add our mind Pagination
-
+add_action('after_setup_theme', 'mindblank_setup_theme'); //add embed container around embeds
 // Remove Actions
 remove_action('wp_head', 'feed_links_extra', 3); // Display the links to the extra feeds such as category feeds
 remove_action('wp_head', 'feed_links', 2); // Display the links to the general feeds: Post and Comment Feed
@@ -361,6 +358,10 @@ add_filter('style_loader_tag', 'mind_style_remove'); // Remove 'text/css' from e
 add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
 add_filter('post_thumbnail_html', 'remove_width_attribute', 10); // Remove width and height dynamic attributes to post images
 add_filter('image_send_to_editor', 'remove_width_attribute', 10); // Remove width and height dynamic attributes to post images
+add_filter( 'embed_oembed_html', 'mind_embed_html', 10, 3 );
+add_filter( 'video_embed_html', 'mind_embed_html' ); // Jetpack
+
+
 
 // Remove Filters
 remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt altogether

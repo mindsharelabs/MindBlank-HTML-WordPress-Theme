@@ -4,13 +4,12 @@ include 'layout/brand.php';
 ?>
 <main role="main" aria-label="Content" class="container">
     <div class="row">
-        <div class="col-12">
+        <div class="col-xs-12 col-md-9">
 
             <!-- section -->
             <section>
-                <?php if(!is_front_page()) : ?>
-                  <h1><?php the_title(); ?></h1>
-                <?php endif; ?>
+
+                <h1><?php the_title(); ?></h1>
 
                 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
@@ -44,6 +43,7 @@ include 'layout/brand.php';
 
             </section>
         </div>
+        <?php get_sidebar(); ?>
     </div>
             <!-- /section -->
 </main>

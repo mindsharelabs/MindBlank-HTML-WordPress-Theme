@@ -4,6 +4,9 @@
                     <div class="col">
                         <p class="align-middle"> &copy; <?php echo date('Y'); ?> Copyright <?php bloginfo('name'); ?>.</p>
                     </div>
+                    <div class="col">
+                        <img src="<?php echo get_template_directory_uri() . '/img/mindshare.svg'; ?>" title="Hand Crafted by Mindshare Labs, Inc" alt="Mindshare Labs, Inc">
+                    </div>
                 </div>
 			</footer>
 			<!-- /footer -->

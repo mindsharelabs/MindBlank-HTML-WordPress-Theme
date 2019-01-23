@@ -1,19 +1,18 @@
 <section class="brand">
-    <div class="row justify-content-between">
+    <div class="row">
         <!-- logo -->
         <div class="col-12 col-md-5 logo">
             <a href="<?php echo home_url(); ?>">
-                <img style="max-width: 150px;" src="<?php echo get_template_directory_uri(); ?>/img/mmw-default.jpg" alt="Molten Metal Works" class="logo-img">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="The Weekly Howl" class="logo-img">
             </a>
         </div>
-        <div class="social-icons d-flex align-items-center ml-3">
-          <a class="icons" href="/"><i class="fab fa-facebook fa-lg"></i></a>
-          <a class="icons" href="/"><i class="fab fa-instagram fa-lg"></i></a>
-          <a class="icons" href="/"><i class="fab fa-yelp fa-lg"></i></a>
+        <!-- /logo -->
+
+        <!-- logo -->
+        <div class="col-12 text-center text-md-left col-md-3">
+            <span class="site-tagline align-middle"><?php echo get_bloginfo('description'); ?></span>
         </div>
-    </div>
-    <div class="row top-menu">
-      <?php mindblank_nav('header-menu'); ?>
+        <!-- /logo -->
     </div>
 </section>
 <hr>

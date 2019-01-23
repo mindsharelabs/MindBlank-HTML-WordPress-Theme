@@ -1,6 +1,6 @@
 
 </div><!--Close main container-->
-<footer class="footer container-fluid">
+<footer style="background: #060606;" class="footer container-fluid">
     <div class="container">
         <div class="row">
             <?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-widgets')) ?>

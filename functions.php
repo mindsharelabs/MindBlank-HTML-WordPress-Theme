@@ -78,7 +78,7 @@ function mindblank_nav($location)
             'link_before' => '',
             'link_after' => '',
             'items_wrap' => '<ul>%3$s</ul>',
-            'depth' => 0,
+            'depth' => 1,
             'walker' => ''
         )
     );

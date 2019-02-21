@@ -10,13 +10,9 @@ include 'layout/brand.php';
                 <section class="notfound-page">
                     <!-- article -->
                     <article id="post-404">
-
                         <h2><?php _e('Page not found', 'mindblank'); ?></h2>
                         <hr>
-                            <a href="<?php echo home_url(); ?>"
-                               class="btn btn-primary btn-block"><?php _e('Return home?', 'mindblank'); ?></a>
-
-
+                        <a href="<?php echo home_url(); ?>" class="btn btn-primary btn-block"><?php _e('Return home?', 'mindblank'); ?></a>
                     </article>
                     <!-- /article -->
 

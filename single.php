@@ -41,7 +41,7 @@ include 'layout/brand.php';
         <hr>
         <div class="row">
             <div class="col-md-7 offset-md-1 col-12">
-
+              <?php if(have_posts()) : while(have_posts()) : the_post(); ?>
                 <!-- section -->
                 <section>
                     <!-- article -->
@@ -60,6 +60,7 @@ include 'layout/brand.php';
                     </article>
                     <!-- /article -->
                 </section>
+              <?php endwhile; endif; ?>
             </div>
             <?php get_sidebar(); ?>
         </div>

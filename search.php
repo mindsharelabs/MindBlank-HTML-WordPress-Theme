@@ -14,8 +14,9 @@ $s_query = get_search_query();
       <div class="row">
               <?php
               $types = array('staff', 'page', 'document'); //add all post types here
+              $found = false;
               foreach ($types as $type) :
-                $found = false;
+
                 $posts = new WP_Query(
                   array(
                     's' => $s_query,            // search query

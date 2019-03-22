@@ -42,6 +42,10 @@ if (function_exists('add_theme_support')) {
     Functions
 \*------------------------------------*/
 
+function mindblank_setup_theme() {
+  
+}
+
 function mapi_var_dump($var)
 {
     if (current_user_can('administrator') && isset($var)) {

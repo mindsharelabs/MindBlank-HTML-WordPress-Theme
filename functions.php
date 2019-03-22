@@ -9,11 +9,11 @@ date_default_timezone_set('America/Denver');
 /*------------------------------------*\
     External Modules/Files
 \*------------------------------------*/
-
-include_once 'inc/content-functions.php';
-include_once 'inc/cpt.php';
-include_once 'inc/acf-functions.php';
-include_once 'inc/aq_resize.php';
+include 'inc/mobile-detect.php';
+include 'inc/content-functions.php';
+include 'inc/cpt.php';
+include 'inc/acf-functions.php';
+include 'inc/aq_resize.php';
 
 /*------------------------------------*\
     Theme Support
@@ -43,7 +43,7 @@ if (function_exists('add_theme_support')) {
 \*------------------------------------*/
 
 function mindblank_setup_theme() {
-  
+
 }
 
 function mapi_var_dump($var)

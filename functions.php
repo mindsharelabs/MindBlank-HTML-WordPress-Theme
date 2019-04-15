@@ -312,6 +312,16 @@ function mindblank_gravatar ($avatar_defaults)
 }
 
 
+// define the embed_html callback
+function mindblank_filter_embed_html( $output, $post, $width, $height ) {
+    // make filter magic happen here...
+    return $output;
+};
+         
+// add the filter
+
+
+
 /*------------------------------------*\
     Actions + Filters + ShortCodes
 \*------------------------------------*/
@@ -336,6 +346,7 @@ remove_action('wp_head', 'rel_canonical');
 remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 
 // Add Filters
+add_filter( 'embed_html', 'mindblank_filter_embed_html', 10, 4 ); //Filters embeded posts HTML to remove WP Logo
 add_filter('avatar_defaults', 'mindblank_gravatar'); // Custom Gravatar in Settings > Discussion
 add_filter('avatar_defaults', 'mindblankgravatar'); // Custom Gravatar in Settings > Discussion
 add_filter('body_class', 'add_slug_to_body_class'); // Add slug to body class (Starkers build)

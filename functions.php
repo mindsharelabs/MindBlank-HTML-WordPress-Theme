@@ -314,10 +314,11 @@ function mindblank_gravatar ($avatar_defaults)
 
 // define the embed_html callback
 function mindblank_filter_embed_html( $output, $post, $width, $height ) {
-    // make filter magic happen here...
+  $theme_slug = get_option('stylesheet');
+    $output = str_replace ( 'wp-admin/images/w-logo-blue.png' , 'wp-content/' . $theme_slug . '/img/logo.svg' , $output);
     return $output;
 };
-         
+
 // add the filter
 
 

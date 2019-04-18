@@ -143,7 +143,7 @@ function mindblank_header_scripts()
 // Load mind Blank conditional scripts
 function mindblank_conditional_scripts()
 {
-    // if (is_page_template('template-allscores.php')) {
+    // if (is_page_template('template-fullwidth.php')) {
     //     // Conditional script(s)
     //
     // }

@@ -1,0 +1,148 @@
+/** Gravity Forms */
+.gform_wrapper form {
+    margin-bottom: 0;
+  }
+  
+  .gform_wrapper ul {
+    @extend .list-unstyled;
+  }
+  
+  .gform_wrapper li {
+    @extend .form-group;
+  }
+  
+  .gform_wrapper .gfield_required {
+    padding-left: 1px;
+    color: $danger;
+  }
+  
+  .gform_wrapper input[type="email"],
+  .gform_wrapper input[type="date"],
+  .gform_wrapper input[type="datetime"],
+  .gform_wrapper input[type="datetime-local"],
+  .gform_wrapper input[type="month"],
+  .gform_wrapper input[type="number"],
+  .gform_wrapper input[type="password"],
+  .gform_wrapper input[type="search"],
+  .gform_wrapper input[type="tel"],
+  .gform_wrapper input[type="text"],
+  .gform_wrapper input[type="time"],
+  .gform_wrapper input[type="week"],
+  .gform_wrapper input[type="url"],
+  .gform_wrapper select,
+  .gform_wrapper textarea {
+    @extend .form-control;
+  }
+  
+  .gform_wrapper .button {
+    @extend .btn;
+    background-color: $primary;
+    color: #fff;
+  }
+  
+  .gform_wrapper .gfield_error {
+    .gfield_label {
+      @extend .alert-danger;
+    }
+  
+    input,
+    select,
+    textarea {
+      @extend .alert-danger;
+    }
+  }
+  
+  .validation_error {
+    @extend .alert;
+    @extend .alert-danger;
+  }
+  
+  .validation_message {
+    display: none;
+  }
+  
+  .ginput_container_address label {
+    visibility: hidden;
+  }
+  
+  #ui-datepicker-div {
+    background: #FFF;
+    border: 1px solid #ddd;
+    border-radius:4px;
+    box-shadow: (0px 3px 5px 0px rgba(50, 50, 50, 0.75));
+    display:none;
+    padding:20px;
+    width:300px; 
+   
+    .ui-icon {
+      color: transparent;
+      cursor: pointer;
+      font-size: 0px;
+    }
+  
+   
+    .ui-datepicker-prev {
+      float: left;
+      width: 10%;
+  
+      .ui-icon:before {
+        content:'\f060';
+      }
+  
+      &.ui-state-disabled {
+        display:none;
+      }
+    }
+  
+    .ui-datepicker-next {
+      float: right;
+      width: 10%;
+      .ui-icon:before {
+        content:'\f061';
+        float: right;
+      }
+  
+      &.ui-state-disabled {
+        display:none;
+      }
+    }
+   
+    .ui-datepicker-title { 
+      select {
+        float: left; 
+        width: 70%;
+      }
+   
+      .ui-datepicker-month {
+        margin: 0px 5% 6px;
+      }
+  
+      .ui-datepicker-year {
+        margin: 0px 15% 6px;
+      }
+    }
+   
+    .ui-datepicker-today {
+      background-color: $primary;
+      border-radius: 4px;
+  
+      a {
+        color: #FFF;
+      }
+    }
+   
+    table {
+      width: 100%;
+  
+      td, th {
+        text-align: center;
+      }
+      
+      td {  
+        a {
+          display: block;
+          padding: 5px;
+        }
+      }
+    }
+  }

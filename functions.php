@@ -116,8 +116,23 @@ function mindblank_header_scripts()
         wp_enqueue_script('bootstrap');
 
 
-        wp_register_script('fontawesome-5', get_template_directory_uri() . '/js/fontawesome-all.js', array(), THEME_VERSION, true);
-        wp_enqueue_script('fontawesome-5');
+
+        //Uncomment only the fonts that you need
+        // wp_register_script('fontawesome-all', get_template_directory_uri() . '/js/all.min.js', array(), THEME_VERSION, true);
+        // wp_enqueue_script('fontawesome-all');
+
+        wp_register_script('fontawesome-brands', get_template_directory_uri() . '/js/brands.min.js', array(), THEME_VERSION, true);
+        wp_enqueue_script('fontawesome-brands');
+
+        wp_register_script('fontawesome-regular', get_template_directory_uri() . '/js/regular.min.js', array(), THEME_VERSION, true);
+        wp_enqueue_script('fontawesome-regular');
+
+        // wp_register_script('fontawesome-light', get_template_directory_uri() . '/js/light.min.js', array(), THEME_VERSION, true);
+        // wp_enqueue_script('fontawesome-light');
+        //
+        // wp_register_script('fontawesome-solid', get_template_directory_uri() . '/js/solid.min.js', array(), THEME_VERSION, true);
+        // wp_enqueue_script('fontawesome-solid');
+
 
         wp_register_script('slideout-js', get_template_directory_uri() . '/js/slideout.min.js', array(), THEME_VERSION);
         wp_enqueue_script('slideout-js');

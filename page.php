@@ -1,9 +1,10 @@
-<?php get_header();
+<?php
+get_header();
 include 'layout/top-header.php';
 ?>
 <main role="main" aria-label="Content" class="container">
     <div class="row">
-      <section class="col-xs-12 col-md-9">
+      <section class="col-12 col-md-9">
         <h1><?php the_title(); ?></h1>
         <?php if (have_posts()): while (have_posts()) : the_post(); ?>
           <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

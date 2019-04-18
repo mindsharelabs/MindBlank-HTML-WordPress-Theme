@@ -5,7 +5,7 @@
  *
  */
 date_default_timezone_set('America/Denver');
-define('THEME_VERSION', 2.0.0);
+define('THEME_VERSION', '2.0.0');
 /*------------------------------------*\
     External Modules/Files
 \*------------------------------------*/
@@ -119,8 +119,8 @@ function mindblank_header_scripts()
         // wp_register_script('fontawesome-all', get_template_directory_uri() . '/js/all.min.js', array(), THEME_VERSION, true);
         // wp_enqueue_script('fontawesome-all');
 
-        wp_register_script('fontawesome-brands', get_template_directory_uri() . '/js/brands.min.js', array(), THEME_VERSION, true);
-        wp_enqueue_script('fontawesome-brands');
+        // wp_register_script('fontawesome-brands', get_template_directory_uri() . '/js/brands.min.js', array(), THEME_VERSION, true);
+        // wp_enqueue_script('fontawesome-brands');
 
         wp_register_script('fontawesome-regular', get_template_directory_uri() . '/js/regular.min.js', array(), THEME_VERSION, true);
         wp_enqueue_script('fontawesome-regular');
@@ -130,6 +130,12 @@ function mindblank_header_scripts()
         //
         // wp_register_script('fontawesome-solid', get_template_directory_uri() . '/js/solid.min.js', array(), THEME_VERSION, true);
         // wp_enqueue_script('fontawesome-solid');
+
+        //This must be enqued if any of the other font awesome js is enqued
+        //Be sure to switch out the rerequs 
+        wp_register_script('fontawesome-solid', get_template_directory_uri() . '/js/fontawesome.min.js', array('fontawesome-regular'), THEME_VERSION, true);
+        wp_enqueue_script('fontawesome-solid');
+
 
 
         wp_register_script('slideout-js', get_template_directory_uri() . '/js/slideout.min.js', array(), THEME_VERSION);

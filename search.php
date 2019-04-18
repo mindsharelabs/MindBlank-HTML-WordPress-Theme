@@ -1,19 +1,13 @@
 <?php
 get_header();
-include 'layout/navigation.php';
-include 'layout/search-header.php';
+include 'layout/top-header.php';
 $s_query = get_search_query();
 ?>
   <main role="main" aria-label="Content" class="container">
     <section class="container blog">
       <div class="row">
-        <div class="col-12 col-md-8 offset-md-2">
-          <?php get_search_form(); ?>
-        </div>
-      </div>
-      <div class="row">
               <?php
-              $types = array('staff', 'page', 'document'); //add all post types here
+              $types = array('page', 'post', 'example-post-type'); //add all post types here
               $found = false;
               foreach ($types as $type) :
 

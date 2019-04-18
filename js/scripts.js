@@ -5,24 +5,22 @@
 
         var windowWidth = $(window).width();
 
-        if (windowWidth < 400) {
-            var menuWidth = windowWidth - 50;
-        } else {
-            var menuWidth = 400;
-        }
         var slideout = new Slideout({
             'panel': document.getElementById('main-panel'),
             'menu': document.getElementById('main-nav'),
-            'padding': menuWidth,
+            'padding': windowWidth,
             'tolerance': 0,
-            'side': 'left'
+            'side': 'right'
         });
 
-        document.querySelector('.slideout-menu').style.width = menuWidth + 'px';
+        document.querySelector('.slideout-menu').style.width = windowWidth + 'px';
 
         //Toggle button
         document.querySelector('.menu-toggle').addEventListener('click', function () {
             slideout.toggle();
+        });
+				document.querySelector('.menu-toggle-close').addEventListener('click', function () {
+            slideout.close();
         });
 
 

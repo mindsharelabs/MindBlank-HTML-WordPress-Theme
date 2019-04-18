@@ -6,27 +6,27 @@
 add_action('init', 'create_post_type_mind'); // Add our mind Blank Custom Post Type
 function create_post_type_mind()
 {
-    register_taxonomy_for_object_type('category', 'podcast'); // Register Taxonomies for Category
-    register_taxonomy_for_object_type('post_tag', 'podcast');
-    register_post_type('podcast', // Register Custom Post Type
+    register_taxonomy_for_object_type('category', 'example-post-type'); // Register Taxonomies for Category
+    register_taxonomy_for_object_type('post_tag', 'example-post-type');
+    register_post_type('example-post-type', // Register Custom Post Type
         array(
             'labels' => array(
-                'name' => __('Podcasts', 'mindblank'), // Rename these to suit
-                'singular_name' => __('Podcast', 'mindblank'),
+                'name' => __('Example Post Type', 'mindblank'), // Rename these to suit
+                'singular_name' => __('Example', 'mindblank'),
                 'add_new' => __('Add New', 'mindblank'),
-                'add_new_item' => __('Add New Podcast', 'mindblank'),
-                'edit' => __('Edit Podcast', 'mindblank'),
-                'edit_item' => __('Edit Podcast', 'mindblank'),
-                'new_item' => __('New Podcast', 'mindblank'),
-                'view' => __('View Podcast', 'mindblank'),
-                'view_item' => __('View Podcast', 'mindblank'),
-                'search_items' => __('Search Podcasts', 'mindblank'),
-                'not_found' => __('No Podcasts found', 'mindblank'),
-                'not_found_in_trash' => __('NoPodcasts found in Trash', 'mindblank')
+                'add_new_item' => __('Add New Post', 'mindblank'),
+                'edit' => __('Edit Post', 'mindblank'),
+                'edit_item' => __('Edit Post', 'mindblank'),
+                'new_item' => __('New Post', 'mindblank'),
+                'view' => __('View Post', 'mindblank'),
+                'view_item' => __('View PPost', 'mindblank'),
+                'search_items' => __('Search Posts', 'mindblank'),
+                'not_found' => __('No Posts found', 'mindblank'),
+                'not_found_in_trash' => __('No Posts found in Trash', 'mindblank')
             ),
             'public' => true,
             'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
-            'has_archive' => 'podcast',
+            'has_archive' => 'example-post-type',
             'supports' => array(
                 'title',
                 'editor',

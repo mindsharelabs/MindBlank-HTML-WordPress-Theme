@@ -23,7 +23,6 @@ $s_query = get_search_query();
                   $found = true;
                   $post_type = get_post_type_object($type);
                   $post_type_label = $post_type->labels->singular_name;
-
                   echo '<div class="col-12"><h3 class="search-label"><hr>';
                     echo sprintf('%s ' . $post_type_label . ' result(s) for ', $posts->found_posts) . '"' . $s_query . '"';
                   echo '</h3></div>';

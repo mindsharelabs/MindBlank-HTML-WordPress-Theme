@@ -9,9 +9,11 @@ include 'layout/top-header.php';
     </div>
     <div class="row">
     <?php
+      $post_type = get_post_type_object($type);
       while (have_posts()) : the_post();
-        get_template_part('loop');
-      endwhile; ?>
+        get_template_part('loop-' . $post_type->name);
+      endwhile;
+      ?>
     </div>
     <div class="row">
       <?php get_template_part('pagination'); ?>

@@ -1,15 +1,11 @@
 @import "header";
 
-@import "bootstrap/bootstrap-reboot";
-@import "bootstrap/bootstrap-grid";
 @import "bootstrap/bootstrap.scss";
 
 @import "custom-variables";
-@import "mixins.scss";
 
 @import "utilities.scss";
 @import "gravity-forms.scss";
-
 
 // mind classes
 @import "slick";

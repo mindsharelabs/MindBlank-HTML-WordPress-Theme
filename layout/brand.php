@@ -1,18 +1,13 @@
-<section class="brand">
-    <div class="row">
-        <!-- logo -->
-        <div class="col-12 col-md-5 logo">
-            <a href="<?php echo home_url(); ?>">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="The Weekly Howl" class="logo-img">
-            </a>
-        </div>
-        <!-- /logo -->
-
-        <!-- logo -->
-        <div class="col-12 text-center text-md-left col-md-3">
-            <span class="site-tagline align-middle"><?php echo get_bloginfo('description'); ?></span>
-        </div>
-        <!-- /logo -->
+<section class="brand container">
+  <div class="row">
+    <div class="col-12 col-md-5 logo">
+      <a href="<?php echo home_url(); ?>">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="The Weekly Howl" class="logo-img">
+      </a>
     </div>
+    <div class="col-12 col-md-7 text-center text-md-left  my-auto">
+      <h3><?php echo get_bloginfo('description'); ?></h3>
+    </div>
+  </div>
 </section>
 <hr>

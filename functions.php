@@ -99,13 +99,6 @@ function mindblank_header_scripts()
 {
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
 
-        wp_register_script('conditionizr', get_template_directory_uri() . '/js/lib/conditionizr-4.3.0.min.js', array(), '4.3.0'); // Conditionizr
-        wp_enqueue_script('conditionizr'); // Enqueue it!
-
-        wp_register_script('modernizr', get_template_directory_uri() . '/js/lib/modernizr-2.7.1.min.js', array(), '2.7.1'); // Modernizr
-        wp_enqueue_script('modernizr'); // Enqueue it!
-
-
         wp_register_script('mindblankscripts-min', get_template_directory_uri() . '/js/scripts.js', array('bootstrap', 'slick-slider'), THEME_VERSION, true);
         wp_enqueue_script('mindblankscripts-min');
 
@@ -114,6 +107,7 @@ function mindblank_header_scripts()
 
         wp_register_script('bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', array('jquery', 'popper'), '4.1.3');
         wp_enqueue_script('bootstrap');
+
 
         //Uncomment only the fonts that you need
         // wp_register_script('fontawesome-all', get_template_directory_uri() . '/js/all.min.js', array(), THEME_VERSION, true);
@@ -131,11 +125,11 @@ function mindblank_header_scripts()
         // wp_register_script('fontawesome-solid', get_template_directory_uri() . '/js/solid.min.js', array(), THEME_VERSION, true);
         // wp_enqueue_script('fontawesome-solid');
 
+
         //This must be enqued if any of the other font awesome js is enqued
-        //Be sure to switch out the rerequs 
+        //Be sure to switch out the dependencies as this should always be enqued after the individual styles
         wp_register_script('fontawesome-solid', get_template_directory_uri() . '/js/fontawesome.min.js', array('fontawesome-regular'), THEME_VERSION, true);
         wp_enqueue_script('fontawesome-solid');
-
 
 
         wp_register_script('slideout-js', get_template_directory_uri() . '/js/slideout.min.js', array(), THEME_VERSION);

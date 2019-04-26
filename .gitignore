@@ -3,7 +3,6 @@
 
 ### Composer template
 composer.phar
-vendor/
 
 .ftpconfig
 sftp.json

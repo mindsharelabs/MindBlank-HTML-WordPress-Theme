@@ -9,9 +9,10 @@ include 'layout/top-header.php';
     </div>
     <div class="row">
     <?php
-      $post_type = get_post_type_object($type);
+      $post_type = get_post_type();
+      $post_type_obj = get_post_type_object($post_type);
       while (have_posts()) : the_post();
-        get_template_part('loop-' . $post_type->name);
+        get_template_part('loop-' . $post_type_obj->name);
       endwhile;
       ?>
     </div>

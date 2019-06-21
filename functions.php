@@ -331,8 +331,19 @@ function mindblank_filter_embed_html( $output, $post, $width, $height ) {
     return $output;
 };
 
-// add the filter
 
+function mind_login_logo() { ?>
+    <style type="text/css">
+        #login h1 a, .login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/img/logo.svg);
+            width: 300px;
+            background-size: 300px 105px;
+            background-repeat: no-repeat;
+            padding-bottom: 30px;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'mind_login_logo' );
 
 
 /*------------------------------------*\

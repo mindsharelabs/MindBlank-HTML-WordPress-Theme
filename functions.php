@@ -128,8 +128,8 @@ function mindblank_header_scripts()
 
         //This must be enqued if any of the other font awesome js is enqued
         //Be sure to switch out the dependencies as this should always be enqued after the individual styles
-        wp_register_script('fontawesome-solid', get_template_directory_uri() . '/js/fontawesome.min.js', array('fontawesome-regular'), THEME_VERSION, true);
-        wp_enqueue_script('fontawesome-solid');
+        wp_register_script('fontawesome-main', get_template_directory_uri() . '/js/fontawesome.min.js', array('fontawesome-regular'), THEME_VERSION, true);
+        wp_enqueue_script('fontawesome-main');
 
 
         wp_register_script('slideout-js', get_template_directory_uri() . '/js/slideout.min.js', array(), THEME_VERSION);

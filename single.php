@@ -1,7 +1,6 @@
 <?php
 get_header();
 include 'layout/top-header.php';
-include 'layout/brand.php';
 if(have_posts()) : while(have_posts()) : the_post(); ?>
   <main role="main" aria-label="Content" <?php post_class(); ?>>
     <?php include 'layout/page-header.php'; ?>
@@ -13,7 +12,7 @@ if(have_posts()) : while(have_posts()) : the_post(); ?>
           <p><?php the_tags(__('Tags: ', 'mindblank'), ', '); ?></p>
           <p><?php _e('Categorised in: ', 'mindblank');the_category(', '); // Separated by commas ?></p>
           <hr>
-        <?php mapi_post_edit(); // Always handy to have Edit Post Links available ?>
+          <?php mapi_post_edit(); // Always handy to have Edit Post Links available ?>
         </div>
       </article>
     </section>

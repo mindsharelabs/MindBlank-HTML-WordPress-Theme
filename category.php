@@ -1,6 +1,5 @@
 <?php get_header();
 include 'layout/top-header.php';
-include 'layout/brand.php';
 ?>
 
 <main role="main" aria-label="Content">

@@ -1,7 +1,6 @@
 <?php
 get_header();
 include 'layout/top-header.php';
-include 'layout/brand.php';
 $s_query = get_search_query();
 ?>
   <main role="main" aria-label="Content" class="container">

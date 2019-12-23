@@ -1,7 +1,7 @@
 <?php
 if (has_post_thumbnail()) :
   $image = get_the_post_thumbnail_url();
-  $image_url = aq_resize($image, 300, 300, true);
+  $image_url = aq_resize($image, 300, 150, true);
 endif;
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class('col-12 col-md-4 mb-3'); ?>>

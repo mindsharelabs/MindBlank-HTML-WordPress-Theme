@@ -24,7 +24,7 @@ if (!isset($content_width)) {
 }
 
 if (function_exists('add_theme_support')) {
-
+  add_image_size( 'loop-thumb', 350, 150, true);
     // Add Thumbnail Theme Support
     add_theme_support('post-thumbnails');
 

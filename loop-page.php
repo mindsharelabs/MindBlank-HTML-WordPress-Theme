@@ -5,7 +5,7 @@ if (has_post_thumbnail()) :
 endif;
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class('col-12 col-md-4 mb-3'); ?>>
-  <div class="card">
+  <div class="card d-flex flex-column">
     <?php if(isset($image_url)) : ?>
       <img class="card-img-top" src="<?php echo $image_url; ?>" alt="<?php the_title_attribute(); ?>">
     <?php endif; ?>

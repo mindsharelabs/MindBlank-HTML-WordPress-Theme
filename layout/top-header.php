@@ -9,7 +9,6 @@
         <div class="col text-right my-auto">
           <span class="menu-toggle d-inline d-md-none"><i class="fas fa-bars"></i></span>
         </div>
-
     </div>
   </div>
 </header>

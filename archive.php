@@ -1,23 +1,19 @@
-<?php
-get_header();
+<?php get_header();
 include 'layout/top-header.php';
 include 'layout/brand.php';
 ?>
-<main role="main" aria-label="Content" <?php post_class('container'); ?>>
-  <section class="row blog">
-    <div class="col-12">
-      <h2 class="section-title"><?php the_archive_title(); ?></h2>
-    </div>
+
+<main role="main" aria-label="Content">
+  <?php include 'layout/archive-header.php'; ?>
+  <section <?php post_class('container'); ?>>
     <div class="row">
-    <?php
-      $post_type = get_post_type();
-      $post_type_obj = get_post_type_object($post_type);
+      <?php
+      $object = get_queried_object();
       while (have_posts()) : the_post();
-        get_template_part('loop-' . $post_type_obj->name);
+        get_template_part('loop-post');
       endwhile;
       ?>
-    </div>
-    <div class="row">
+      </div>
       <?php get_template_part('pagination'); ?>
     </div>
   </section>

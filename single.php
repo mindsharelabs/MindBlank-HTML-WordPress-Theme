@@ -9,19 +9,6 @@ if(have_posts()) : while(have_posts()) : the_post(); ?>
     <section class="container">
       <article id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
         <div class="col-12 col-md-8 offset-0 offset-md-2">
-          <?php
-          if (has_post_thumbnail()) :
-            echo'<div class="row">';
-              echo'<div class="col-12">';
-              $attr = array('echo' => false,);
-              $image_url = aq_resize(get_the_post_thumbnail_url(), 300, 400, true, true);
-                echo '<a href="' . get_the_permalink() . '" title="' . the_title_attribute($attr) . '" class="single-thumb">';
-                  echo '<img src="' . $image_url . '"  title="' . the_title_attribute($attr) . '" alt="' . the_title_attribute($attr) . '">';
-                echo '</a>';
-              echo'</div>';
-            echo'</div>';
-          endif;
-          ?>
           <?php the_content(); ?>
           <p><?php the_tags(__('Tags: ', 'mindblank'), ', '); ?></p>
           <p><?php _e('Categorised in: ', 'mindblank');the_category(', '); // Separated by commas ?></p>

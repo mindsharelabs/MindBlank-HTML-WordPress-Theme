@@ -9,7 +9,6 @@ include 'layout/brand.php';
   <section class="container">
     <div class="row">
       <section class="col-12 col-md-9">
-
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
           <?php the_content(); ?>
           <?php comments_template('', true); // Remove if you don't want comments ?>

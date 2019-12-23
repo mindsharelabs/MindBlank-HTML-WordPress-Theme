@@ -69,6 +69,7 @@ a {
     text-decoration: none;
   }
 }
+
 //Navigation Styles
 header.top-header {
   nav.header-menu {
@@ -100,7 +101,12 @@ header.top-header {
     }
   }
 }
-
+header.blog-header {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: luminosity;
+}
 // Footer
 footer.footer {
   background: $dark;

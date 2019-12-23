@@ -2,7 +2,9 @@
 get_header();
 include 'layout/top-header.php';
 ?>
-<main role="main" aria-label="Content" class="container">
+<main role="main" aria-label="Content">
+    <?php include 'layout/page-header.php'; ?>
+  <section class="container">
     <div class="row">
       <section class="col-12">
         <h1><?php the_title(); ?></h1>
@@ -11,13 +13,13 @@ include 'layout/top-header.php';
             <?php the_content(); ?>
             <?php comments_template('', true); // Remove if you don't want comments ?>
             <br class="clear">
-            <?php edit_post_link('Edit this Page', '', '', null, 'btn btn-warning'); // Always handy to have Edit Post Links available ?>
+            <?php mapi_post_edit(); // Always handy to have Edit Post Links available ?>
           </article>
 
         <?php endwhile; endif; ?>
       </section>
     </div>
-  </div>
+  </section>
 </main>
 <?php
 include 'layout/top-footer.php';

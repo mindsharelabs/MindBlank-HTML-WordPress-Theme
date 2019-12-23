@@ -63,6 +63,12 @@ function mapi_write_log($message) {
         }
     }
 }
+
+function mapi_post_edit() {
+  $post_type = get_post_type();
+  $post_type_obj = get_post_type_object($post_type);
+  edit_post_link( 'Edit this ' . $post_type_obj->labels->singular_name, '', '', get_the_id(), 'btn btn-sm btn-info mt-3 mb-3 float-right post-edit-link' );
+}
 // mind Blank navigation
 function mindblank_nav($location)
 {
@@ -116,8 +122,8 @@ function mindblank_header_scripts()
         // wp_register_script('fontawesome-brands', get_template_directory_uri() . '/js/brands.min.js', array(), THEME_VERSION, true);
         // wp_enqueue_script('fontawesome-brands');
 
-        wp_register_script('fontawesome-regular', get_template_directory_uri() . '/js/regular.min.js', array(), THEME_VERSION, true);
-        wp_enqueue_script('fontawesome-regular');
+        // wp_register_script('fontawesome-regular', get_template_directory_uri() . '/js/regular.min.js', array(), THEME_VERSION, true);
+        // wp_enqueue_script('fontawesome-regular');
 
         // wp_register_script('fontawesome-light', get_template_directory_uri() . '/js/light.min.js', array(), THEME_VERSION, true);
         // wp_enqueue_script('fontawesome-light');
@@ -128,8 +134,8 @@ function mindblank_header_scripts()
 
         //This must be enqued if any of the other font awesome js is enqued
         //Be sure to switch out the dependencies as this should always be enqued after the individual styles
-        wp_register_script('fontawesome-main', get_template_directory_uri() . '/js/fontawesome.min.js', array('fontawesome-regular'), THEME_VERSION, true);
-        wp_enqueue_script('fontawesome-main');
+        // wp_register_script('fontawesome-main', get_template_directory_uri() . '/js/fontawesome.min.js', array('fontawesome-regular'), THEME_VERSION, true);
+        // wp_enqueue_script('fontawesome-main');
 
 
         wp_register_script('slideout-js', get_template_directory_uri() . '/js/slideout.min.js', array(), THEME_VERSION);
@@ -345,9 +351,6 @@ function mind_login_logo() { ?>
 <?php }
 add_action( 'login_enqueue_scripts', 'mind_login_logo' );
 
-function mind_embed_html( $html ) {
-    return '<div class="video-container">' . $html . '</div>';
-}
 /*------------------------------------*\
     Actions + Filters + ShortCodes
 \*------------------------------------*/

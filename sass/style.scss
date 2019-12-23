@@ -4,12 +4,12 @@
 
 @import "custom-variables";
 
-@import "utilities.scss";
-@import "gravity-forms.scss";
-
-// mind classes
+@import "gravity-forms";
+@import "tml";
 @import "slick";
 @import "slick-theme";
 @import "slideout";
+
+// mind classes
 @import "custom-styles";
 @import "custom-styles-responsive";

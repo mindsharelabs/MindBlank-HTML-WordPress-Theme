@@ -13,9 +13,7 @@
       </div>
 		</footer>
 
-		</div>
-		</div>
-		<!-- /wrapper //Opened in layout/navigation.php-->
+	</div>
 
 		<?php wp_footer(); ?>
             <!-- Global site tag (gtag.js) - Google Analytics -->

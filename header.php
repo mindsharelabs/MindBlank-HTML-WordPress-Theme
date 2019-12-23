@@ -53,4 +53,3 @@
     <?php mindblank_nav('header-menu'); ?>
 </nav>
 <div id="main-panel">
-    <div class="container">

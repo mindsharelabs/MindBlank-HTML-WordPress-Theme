@@ -1,6 +1,7 @@
 <?php
 get_header();
 include 'layout/top-header.php';
+include 'layout/brand.php';
 ?>
 <main role="main" aria-label="Content" <?php post_class('container'); ?>>
   <section class="row blog">

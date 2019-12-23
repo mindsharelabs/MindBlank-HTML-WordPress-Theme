@@ -1,16 +1,16 @@
 <?php
 get_header();
 include 'layout/top-header.php';
+include 'layout/brand.php';
 $s_query = get_search_query();
 ?>
   <main role="main" aria-label="Content" class="container">
     <section class="container blog">
       <div class="row">
               <?php
-              $types = array('page', 'post', 'example-post-type'); //add all post types here
+              $types = array('page', 'post', 'example-post-type'); //add searchable posts types here
               $found = false;
               foreach ($types as $type) :
-
                 $posts = new WP_Query(
                   array(
                     's' => $s_query,            // search query

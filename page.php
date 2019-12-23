@@ -1,6 +1,7 @@
 <?php
 get_header();
 include 'layout/top-header.php';
+include 'layout/brand.php';
 ?>
 <main role="main" aria-label="Content">
   <?php if (have_posts()): while (have_posts()) : the_post(); ?>

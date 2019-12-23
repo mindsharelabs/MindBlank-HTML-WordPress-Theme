@@ -9,6 +9,7 @@ body {
   opacity: 0;
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
+  font-size: 20px;
   color: $dark;
   -moz-osx-font-smoothing: grayscale; // enable font-smoothing for browsers that support it
   -webkit-font-smoothing: antialiased;
@@ -28,15 +29,15 @@ img {
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Courier Prime', monospace;
 }
 h1 {
   font-weight: 900;
-  color: $primary;
+  color: $dark;
 }
 h2 {
   font-weight: 400;
-  color: $primary;
+  color: $dark;
 }
 hr {
   width: 100%;
@@ -44,7 +45,29 @@ hr {
 
 //Navigation Styles
 header.top-header {
-
+  nav.header-menu {
+    ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      list-style: none;
+      li {
+        margin: 0;
+        padding: 0;
+        a {
+          padding: 5px 10px;
+        }
+        &.current_page_item {
+          a {
+            background: $primary;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
 }
 
 // Footer
@@ -92,7 +115,7 @@ footer.bottom-footer {
 
 /* sidebars and asides */
 aside.sidebar {
-  
+
 }
 //Responcive Embeds
 .embed-container {

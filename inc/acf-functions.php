@@ -8,23 +8,19 @@ add_action('acf/init', 'mind_acf_init');
 if( function_exists('acf_add_options_page') ) {
 
     acf_add_options_page(array(
-        'page_title' 	=> 'Theme General Settings',
-        'menu_title'	=> 'Theme Settings',
-        'menu_slug' 	=> 'theme-general-settings',
+        'page_title' 	=> 'Theme Settings Page Title',
+        'menu_title'	=> 'Theme Settings Menu Title',
+        'menu_slug' 	=> 'mindblank-theme-settings',
         'capability'	=> 'edit_posts',
         'redirect'		=> false
     ));
 
-    acf_add_options_sub_page(array(
-        'page_title' 	=> 'Theme Header Settings',
-        'menu_title'	=> 'Header Settings',
-        'parent_slug'	=> 'theme-general-settings',
-    ));
+    // acf_add_options_sub_page(array(
+    //     'page_title' 	=> 'Sub Page Title',
+    //     'menu_title'	=> 'Sub Page Menu Title',
+    //     'parent_slug'	=> 'mindblank-theme-settings',
+    // ));
 
-    acf_add_options_sub_page(array(
-        'page_title' 	=> 'Theme Footer Settings',
-        'menu_title'	=> 'Footer',
-        'parent_slug'	=> 'theme-general-settings',
-    ));
+
 
 }

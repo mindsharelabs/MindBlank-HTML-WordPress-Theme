@@ -50,6 +50,6 @@
     </div>
   </div>
 
-    <?php mindblank_nav('header-menu'); ?>
+  <?php mindblank_nav('header-menu'); ?>
 </nav>
 <div id="main-panel">

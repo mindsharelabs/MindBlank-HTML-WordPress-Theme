@@ -1,12 +1,15 @@
 <header class="header top-header" role="banner">
-  <div class="container">
+  <div class="container pt-2">
     <div class="row">
-        <div class="col-10 col-md-4 offset-md-8">
-            <?php get_search_form();?>
+        <div class="col-9 my-auto d-none d-md-block ">
+          <nav class="desktop header-menu text-right">
+            <?php mindblank_nav('header-menu'); ?>
+          </nav>
         </div>
-        <div class="col-2 d-block d-md-none text-right">
-            <span class="menu-toggle"><i class="far fa-bars"></i></span>
+        <div class="col text-right my-auto">
+          <span class="menu-toggle d-inline d-md-none"><i class="fas fa-bars"></i></span>
         </div>
+
     </div>
   </div>
 </header>

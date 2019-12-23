@@ -1,13 +1,14 @@
 <?php
 get_header();
 include 'layout/top-header.php';
+include 'layout/brand.php';
 if(have_posts()) : while(have_posts()) : the_post(); ?>
   <main role="main" aria-label="Content" <?php post_class(); ?>>
     <?php include 'layout/page-header.php'; ?>
 
     <section class="container">
       <article id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
-        <div class="col-12 col-md-10 offset-md-1">
+        <div class="col-12 col-md-8 offset-0 offset-md-2">
           <?php
           if (has_post_thumbnail()) :
             echo'<div class="row">';

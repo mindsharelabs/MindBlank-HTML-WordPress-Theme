@@ -7,7 +7,7 @@ include 'layout/top-header.php';
   <?php include 'layout/page-header.php'; ?>
   <section class="container">
     <div class="row">
-      <section class="col-12 col-md-9">
+      <section class="col-12 col-md-10 offset-0 offset-md-1">
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
           <?php the_content(); ?>
           <?php comments_template('', true); // Remove if you don't want comments ?>

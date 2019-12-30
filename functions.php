@@ -11,6 +11,7 @@ define('THEME_VERSION', '2.0.0');
 \*------------------------------------*/
 include 'inc/mobile-detect.php';
 include 'inc/content-functions.php';
+include 'mindevents/mindevents.php';
 include 'inc/cpt.php';
 include 'inc/acf-functions.php';
 include 'inc/aq_resize.php';
@@ -403,7 +404,7 @@ add_action( 'login_enqueue_scripts', 'mind_login_logo' );
 \*------------------------------------*/
 
 // Add Actions
-add_action('init', 'mindblank_header_scripts'); // Add Custom Scripts to wp_head
+add_action('wp_enqueue_scripts', 'mindblank_header_scripts'); // Add Custom Scripts to wp_head
 add_action('wp_print_scripts', 'mindblank_conditional_scripts'); // Add Conditional Page Scripts
 add_action('get_header', 'enable_threaded_comments'); // Enable Threaded Comments
 add_action('wp_enqueue_scripts', 'mindblank_styles'); // Add Theme Stylesheet

@@ -5,7 +5,7 @@ include 'layout/brand.php';
 if(have_posts()) :
   echo '<div class="container pt-0 pt-md-4">';
   while(have_posts()) :
-
+    the_post();
     echo '<div class="row">';
       echo '<div class="col-12">';
         the_content();

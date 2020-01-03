@@ -6,7 +6,7 @@ else :
   $background = null;
 endif;
 
-echo '<header class="blog-header bg-primary mt-3 pt-5 pb-5 mb-4" ' . $background . '>';
+echo '<header class="blog-header bg-primary pt-5 pb-5 mb-4" ' . $background . '>';
   echo '<div class="container pt-5 pb-5">';
     echo '<div class="row">';
       echo '<div class="col-12 text-center">';

@@ -118,11 +118,11 @@ header.top-header {
             color: darken($secondary, 40%);
           }
         }
-        &.page_item_has_children {
+        &.menu-item-has-children {
           a {
             padding-right: 25px;
           }
-          ul.children {
+          ul.children,ul.sub-menu {
             height: 0;
             overflow: hidden;
             position: absolute;
@@ -135,7 +135,7 @@ header.top-header {
             box-shadow: 0px 5px 3px 0 rgba(1,1,1,.2);
           }
           &:hover {
-            ul.children {
+            ul.children, ul.sub-menu {
               height: auto;
               li {
                 a {

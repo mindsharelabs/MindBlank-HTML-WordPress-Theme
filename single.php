@@ -7,7 +7,7 @@ if(have_posts()) : while(have_posts()) : the_post(); ?>
 
     <section class="container">
       <article id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
-        <div class="col-12 col-md-8 offset-0 offset-md-2">
+        <div class="col-12">
           <?php the_content(); ?>
           <p><?php the_tags(__('Tags: ', 'mindblank'), ', '); ?></p>
           <p><?php _e('Categorised in: ', 'mindblank');the_category(', '); // Separated by commas ?></p>

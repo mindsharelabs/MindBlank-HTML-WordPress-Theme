@@ -1,15 +1,13 @@
 <?php
-if (has_post_thumbnail()) :
-  $image = get_the_post_thumbnail_url();
-  $image_url = aq_resize($image, 300, 150, true);
-endif;
 $cats = wp_get_post_categories(get_the_id(), array('fields' => 'id=>name'));
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class('col-12 col-md-6 col-lg-4 mb-3'); ?>>
   <div class="card h-100">
-    <?php if(isset($image_url)) : ?>
-      <img class="card-img-top" src="<?php echo $image_url; ?>" alt="<?php the_title_attribute(); ?>">
-    <?php endif; ?>
+    <?php
+    if(has_post_thumbnail( )) :
+      the_post_thumbnail( get_the_id(),'medoum');
+    endif;
+    ?>
     <div class="card-body">
       <span class="posted-date mb-2">
         <small class="text-muted">
@@ -32,9 +30,7 @@ $cats = wp_get_post_categories(get_the_id(), array('fields' => 'id=>name'));
 
       the_excerpt();
 
-       ?>
-
-
+      ?>
     </div>
     <a href="<?php the_permalink(); ?>" class="btn btn-block btn-default">Read More <i class="far fa-long-arrow-right"></i></a>
   </div>

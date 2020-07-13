@@ -1,12 +1,41 @@
 /** Gravity Forms */
 .gform_wrapper{
   margin-bottom: 20px;
+  ul.gform_fields {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    .gfield {
+      float: left;
+      width: 100%;
+      margin-top: 25px;
+    }
+    .gf_left_half {
+      width: 50%;
+      float: left;
+      padding-right: 7.5px;
+    }
+    .gf_right_half {
+      width: 50%;
+      float: right;
+      padding-left: 7.5px;
+    }
+  }
+  .hidden_label {
+    label {display: none;}
+  }
+  .gform_wrapper ul {
+    @extend .list-unstyled;
+  }
   label.gfield_label {
     font-size: 1.2em;
     font-weight: bold;
   }
   .gform_validation_container {
     display: none;
+  }
+  table.gfield_list_container {
+    width: 100%;
   }
   .gfield_consent_description {
     margin-left: 15px;
@@ -17,166 +46,241 @@
 
     }
   }
-  .ginput_container_consent {
+  .ginput_container_list {
+    tr.gfield_list_group {
+      .gfield_list_icons {
+        text-align: center;
+      }
+    }
+  }
+  .ginput_container_checkbox {
+    li {
+      flex-grow: 1;
+      width: 33%;
+    }
 
   }
-}
-.gform_card_icon_container {
-  display: none;
-}
-.ginput_cardinfo_left {
-  display: block;
-  float: left;
-  width: 79%;
-  margin-right: 1%;
-}
-.ginput_cardinfo_right {
-  display: block;
-  float: left;
-  width: 20%;
-}
-.ginput_card_expiration_container {
-  .ginput_card_expiration {
-    float: left;
+  .ginput_container_address {
+    display: flex;
+    flex-wrap: wrap;
+    label {
+      margin-top: -2px;
+      display: block;
+    }
+    & > span {
+      flex-grow: 1;
+      display: block;
+      &.address_line_1, &.address_line_2 {
+        width: 100%;
+      }
+      &.address_city {
+        width: 50%;
+        padding-right: 1%;
+      }
+      &.address_state {
+        width: 25%;
+        padding-right: 1%;
+      }
+      &.address_zip {
+        width: 25%;
+      }
+    }
+
   }
-  .ginput_card_expiration_month {
-    width: 74%;
+  .clear-multi {
+    display: flex;
+    & > div {
+      flex-grow: 1;
+      flex-grow: 1;
+      display: flex;
+      padding-right: 10px;
+      label.ginput_container_time {
+        margin-bottom: 0;
+        margin-top: 5px;
+      }
+      i {
+        padding: 0 5px;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+
+
+  .gfield_visibility_hidden {
+    display: none;
+  }
+  .gform_card_icon_container {
+    display: none;
+  }
+  .ginput_cardinfo_left {
+    display: block;
+    float: left;
+    width: 79%;
     margin-right: 1%;
   }
-  .ginput_card_expiration_year {
-    width: 25%;
+  .ginput_cardinfo_right {
+    display: block;
+    float: left;
+    width: 20%;
   }
-  label {
-    clear: both;
-    width: 100%;
-  }
-}
-.ginput_container.ginput_container_textarea {
-  textarea.small{
-    height: 125px;
-  }
-}
-.ginput_complex {
-  &.has_first_name.no_middle_name.has_last_name {
-    display: flex;
-    span.name_first {
-      flex: 1;
-      margin-right: 10px;
+  .ginput_card_expiration_container {
+    .ginput_card_expiration {
+      float: left;
     }
-    span.name_last {
-      flex: 1;
-      margin-right: 10px;
+    .ginput_card_expiration_month {
+      width: 74%;
+      margin-right: 1%;
     }
-    span:last-child{
-      margin-right: 0;
+    .ginput_card_expiration_year {
+      width: 25%;
     }
-
-  }
-
-  label{
-    font-size: .8em;
-  }
-}
-.hidden_label {
-  label {display: none;}
-}
-.gform_wrapper ul {
-  @extend .list-unstyled;
-}
-
-.gform_wrapper li {
-  @extend .form-group;
-  ul.gform_fields {
     label {
-      font-size: 1.2em;
-      font-weight: bold;
+      clear: both;
+      width: 100%;
+    }
+  }
+  .ginput_container_textarea {
+    textarea.small{
+      height: 125px;
+    }
+  }
+  .ginput_container_name {
+    @extend .input-group;
+    justify-content: space-between;
+    span {
+      display: flex;
+      flex-direction: column;
+    }
+    span.name_prefix {
+      @extend .input-group-prepend;
+    }
+    span.name_suffix {
+      @extend .input-group-append;
+    }
+    label{
+      font-size: .8em;
     }
   }
 
-}
-
-.ginput_full.ginput_cardextras {
-  display: block;
-  margin-top: 4px;
-}
-ul.gfield_checkbox, ul.gfield_radio {
-  display: flex;
-  flex-wrap: wrap;
   li {
-    @extend .form-check;
-    margin-bottom: 0;
-    input{
-      margin-right: 10px;
+    ul.gform_fields {
+      @extend .form-group;
+      label {
+        font-size: 1.2em;
+        font-weight: bold;
+      }
     }
   }
-}
 
-.gfield.gsection {
-  border-left: 10px solid $warning;
-  border-top: 1px solid $warning;
-  padding: 10px;
-  margin-top: 43px;
-}
-
-.gform_wrapper .gfield_required {
-  padding-left: 1px;
-  color: $danger;
-}
-
-.gform_wrapper input[type="email"],
-.gform_wrapper input[type="date"],
-.gform_wrapper input[type="datetime"],
-.gform_wrapper input[type="datetime-local"],
-.gform_wrapper input[type="month"],
-.gform_wrapper input[type="number"],
-.gform_wrapper input[type="password"],
-.gform_wrapper input[type="search"],
-.gform_wrapper input[type="tel"],
-.gform_wrapper input[type="text"],
-.gform_wrapper input[type="time"],
-.gform_wrapper input[type="week"],
-.gform_wrapper input[type="url"],
-.gform_wrapper select,
-.gform_wrapper textarea {
-  @extend .form-control;
-}
-
-.gform_wrapper .button {
-  @extend .btn;
-  @extend .btn-lg;
-  background-color: $primary;
-  color: #fff;
-}
-
-.gform_wrapper .gfield_error {
-  .gfield_label {
-    @extend .alert-danger;
+  .ginput_full.ginput_cardextras {
+    display: block;
+    margin-top: 4px;
+  }
+  ul.gfield_checkbox, ul.gfield_radio {
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      @extend .form-check;
+      margin-bottom: 0;
+      padding-left: 10px;
+      padding-right: 10px;
+      input{
+        margin-right: 3px;
+      }
+    }
   }
 
-  input,
+  .gfield.gsection {
+    border-left: 10px solid $info;
+    border-top: 1px solid $info;
+    padding: 10px;
+    margin-top: 40px;
+  }
+
+  .gfield_required {
+    padding-left: 1px;
+    color: $danger;
+  }
+
+  input[type="email"],
+  input[type="date"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="month"],
+  input[type="number"],
+  input[type="password"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="text"],
+  input[type="time"],
+  input[type="week"],
+  input[type="url"],
   select,
   textarea {
+    @extend .form-control;
+  }
+
+  .button {
+    @extend .btn;
+    @extend .btn-lg;
+    background-color: $primary;
+    color: #fff;
+  }
+
+  .gfield_error {
+    .gfield_label {
+      @extend .alert-danger;
+    }
+
+    input,
+    select,
+    textarea {
+      @extend .alert-danger;
+    }
+  }
+
+  .validation_error {
+    @extend .alert;
     @extend .alert-danger;
   }
-}
 
-.validation_error {
-  @extend .alert;
-  @extend .alert-danger;
-}
+  .validation_message {
+    display: none;
+  }
 
-.validation_message {
-  display: none;
+
+  .gf_progressbar {
+    @extend .progress;
+    height: 30px;
+    margin-bottom: 15px;
+    .gf_progressbar_percentage {
+      @extend .progress-bar;
+      font-size: 18px;
+      span {
+        display: block;
+        padding: 10px;
+      }
+    }
+  }
+
+  .gform_footer, .gform_page_footer {
+    clear: both;
+    padding-top: 15px;
+    width: 100%;
+  }
+
 }
 
 
 #ui-datepicker-div {
   background: #FFF;
   border: 1px solid #ddd;
-  border-radius:4px;
-  box-shadow: (0px 3px 5px 0px rgba(50, 50, 50, 0.75));
+  border-radius:$border-radius;
+  box-shadow: $box-shadow;
   display:none;
-  padding:20px;
+  padding:15px;
   width:300px;
 
   .ui-icon {
@@ -248,21 +352,6 @@ ul.gfield_checkbox, ul.gfield_radio {
         display: block;
         padding: 5px;
       }
-    }
-  }
-}
-
-
-.gf_progressbar {
-  @extend .progress;
-  height: 30px;
-  margin-bottom: 15px;
-  .gf_progressbar_percentage {
-    @extend .progress-bar;
-    font-size: 18px;
-    span {
-      display: block;
-      padding: 10px;
     }
   }
 }

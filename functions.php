@@ -239,15 +239,18 @@ function mapi_var_dump($var)
         echo '</pre>';
     }
 }
-function mapi_write_log($message) {
-    if ( WP_DEBUG === true ) {
-        if ( is_array($message) || is_object($message) ) {
-            error_log( print_r($message, true) );
-        } else {
-            error_log( $message );
-        }
-    }
+if(!function_exists('mapi_write_log')) {
+	function mapi_write_log($message) {
+	    if ( WP_DEBUG === true ) {
+	        if ( is_array($message) || is_object($message) ) {
+	            error_log( print_r($message, true) );
+	        } else {
+	            error_log( $message );
+	        }
+	    }
+	}
 }
+
 
 function mapi_post_edit() {
   $post_type = get_post_type();
@@ -582,6 +585,9 @@ function mind_login_logo() { ?>
     </style>
 <?php }
 add_action( 'login_enqueue_scripts', 'mind_login_logo' );
+
+
+
 
 /*------------------------------------*\
     Actions + Filters + ShortCodes

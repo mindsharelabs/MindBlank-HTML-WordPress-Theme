@@ -5,7 +5,7 @@ include 'layout/brand.php';
 ?>
 <main role="main" aria-label="Content" <?php post_class(); ?>>
   <?php
-  
+
 
   echo '<section class="blog">';
     echo '<div class="container">';
@@ -15,7 +15,7 @@ include 'layout/brand.php';
             get_template_part( 'loop-post' );
           endwhile;
         else :
-          '<h3 class="text-center">There\'s nothin\' here.</h3>';
+          echo '<h3 class="text-center">There\'s nothin\' here.</h3>';
         endif;
       echo '</div>';
       get_template_part('pagination');

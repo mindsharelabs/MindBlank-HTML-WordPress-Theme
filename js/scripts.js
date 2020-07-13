@@ -52,7 +52,6 @@
         jQuery('body').addClass('fade-in');
 
 
-
     });
 
 

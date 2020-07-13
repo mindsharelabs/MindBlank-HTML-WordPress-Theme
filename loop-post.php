@@ -5,7 +5,7 @@ $cats = wp_get_post_categories(get_the_id(), array('fields' => 'id=>name'));
   <div class="card h-100">
     <?php
     if(has_post_thumbnail( )) :
-      the_post_thumbnail( get_the_id(),'medoum');
+      the_post_thumbnail( get_the_id(), 'medium');
     endif;
     ?>
     <div class="card-body">

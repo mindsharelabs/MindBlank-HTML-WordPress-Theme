@@ -254,6 +254,8 @@ function mapi_post_edit() {
   $post_type_obj = get_post_type_object($post_type);
   edit_post_link( 'Edit this ' . $post_type_obj->labels->singular_name, '', '', get_the_id(), 'btn btn-sm btn-info mt-3 mb-3 float-right post-edit-link' );
 }
+
+
 // mind Blank navigation
 function mindblank_nav($location)
 {

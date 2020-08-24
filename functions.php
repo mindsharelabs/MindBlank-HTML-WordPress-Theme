@@ -24,9 +24,6 @@ include 'inc/aq_resize.php';
     Require Plugins
 \*------------------------------------*/
 
-
-
-
 require_once 'inc/class-tgm-plugin-activation.php';
 add_action( 'tgmpa_register', 'benton_register_required_plugins' );
 /**

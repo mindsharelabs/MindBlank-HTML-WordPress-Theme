@@ -295,38 +295,8 @@ function mindblank_header_scripts()
         wp_register_script('mindblankscripts-min', get_template_directory_uri() . '/js/scripts.js', array('bootstrap', 'slick-slider'), THEME_VERSION, true);
         wp_enqueue_script('mindblankscripts-min');
 
-        wp_register_script('popper', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', array('jquery'), '1.16.0');
-        wp_enqueue_script('popper');
-
-        wp_register_script('bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js', array('jquery', 'popper'), '4.4.1');
+        wp_register_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.bundle.min.js', array('jquery'), '4.4.1');
         wp_enqueue_script('bootstrap');
-
-
-        //Uncomment only the fonts that you need
-        // wp_register_script('fontawesome-all', get_template_directory_uri() . '/js/all.min.js', array(), THEME_VERSION, true);
-        // wp_enqueue_script('fontawesome-all');
-
-        // wp_register_script('fontawesome-brands', get_template_directory_uri() . '/js/brands.min.js', array(), THEME_VERSION, true);
-        // wp_enqueue_script('fontawesome-brands');
-
-        wp_register_script('fontawesome-regular', get_template_directory_uri() . '/js/regular.min.js', array(), THEME_VERSION, true);
-        wp_enqueue_script('fontawesome-regular');
-
-        // wp_register_script('fontawesome-light', get_template_directory_uri() . '/js/light.min.js', array(), THEME_VERSION, true);
-        // wp_enqueue_script('fontawesome-light');
-        //
-        wp_register_script('fontawesome-solid', get_template_directory_uri() . '/js/solid.min.js', array(), THEME_VERSION, true);
-        wp_enqueue_script('fontawesome-solid');
-
-
-        //This must be enqued if any of the other font awesome js is enqued
-        //Be sure to switch out the dependencies as this should always be enqued after the individual styles
-        wp_register_script('fontawesome-main', get_template_directory_uri() . '/js/fontawesome.min.js', array('fontawesome-regular'), THEME_VERSION, true);
-        wp_enqueue_script('fontawesome-main');
-
-
-        wp_register_script('slideout-js', get_template_directory_uri() . '/js/slideout.min.js', array(), THEME_VERSION);
-        wp_enqueue_script('slideout-js');
 
         wp_register_script('slick-slider', get_template_directory_uri() . '/js/slick.min.js', array(), THEME_VERSION);
         wp_enqueue_script('slick-slider');

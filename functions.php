@@ -292,14 +292,23 @@ function mindblank_header_scripts()
 {
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
 
-        wp_register_script('mindblankscripts-min', get_template_directory_uri() . '/js/scripts.js', array('bootstrap', 'slick-slider'), THEME_VERSION, true);
-        wp_enqueue_script('mindblankscripts-min');
+      wp_register_script('mindblankscripts-min', get_template_directory_uri() . '/js/scripts.js', array('bootstrap', 'slick-slider'), THEME_VERSION, true);
+      wp_enqueue_script('mindblankscripts-min');
 
-        wp_register_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.bundle.min.js', array('jquery'), '4.4.1');
-        wp_enqueue_script('bootstrap');
+      wp_register_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.bundle.min.js', array('jquery'), '4.4.1');
+      wp_enqueue_script('bootstrap');
 
-        wp_register_script('slick-slider', get_template_directory_uri() . '/js/slick.min.js', array(), THEME_VERSION);
-        wp_enqueue_script('slick-slider');
+      wp_register_script('slick-slider', get_template_directory_uri() . '/js/slick.min.js', array(), THEME_VERSION);
+      wp_enqueue_script('slick-slider');
+
+
+      wp_register_script('fontawesome', 'https://kit.fontawesome.com/2376b7dee0.js', array(), THEME_VERSION, true);
+      wp_enqueue_script('fontawesome');
+      add_action('wp_head', function() {
+        echo '<link rel="preconnect" href="https://kit-pro.fontawesome.com">';
+      });
+
+
     }
 }
 
@@ -365,11 +374,19 @@ function mindblank_styles()
     wp_register_style('mindblankcssmin', get_template_directory_uri() . '/style.css', array(), '1.0');
     wp_enqueue_style('mindblankcssmin');
 
-    wp_register_style('google-fonts', 'https://fonts.googleapis.com/css?family=Courier+Prime|Raleway:200,400,400i,700&display=swap', array(), '1.0');
-    wp_enqueue_style('google-fonts');
+    wp_register_style('google-fonts', 'https://fonts.googleapis.com/css?family=Courier+Prime|Raleway:200,400,400i,700&display=swap', array(), THEME_VERSION);
+		add_action('wp_head', function() {
+			echo '<link rel="preload" href="https://fonts.googleapis.com">';
+		});
 
 
 }
+
+function mind_add_footer_styles() {
+		wp_enqueue_style('google-fonts');
+};
+add_action( 'get_footer', 'mind_add_footer_styles' );
+
 
 // Register mind Blank Navigation
 function register_mind_menu()

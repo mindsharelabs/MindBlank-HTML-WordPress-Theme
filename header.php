@@ -38,18 +38,4 @@
 </head>
 
 <body <?php body_class(); ?>>
-<!-- nav -->
-<nav id="main-nav" class="nav" role="navigation">
-  <div class="container">
-    <div class="row">
-      <div class="col text-right menu-toggle-cont">
-        <span class="menu-toggle-close">
-          <i class="far fa-times fa-2x"></i>
-        </span>
-      </div>
-    </div>
-  </div>
-
-  <?php mindblank_nav('header-menu'); ?>
-</nav>
 <div id="main-panel">

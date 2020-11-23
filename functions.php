@@ -9,6 +9,7 @@ define('THEME_VERSION', '2.0.0');
 /*------------------------------------*\
     External Modules/Files
 \*------------------------------------*/
+include 'inc/blocks.php';
 include 'inc/mobile-detect.php';
 include 'inc/content-functions.php';
 include 'mindevents/mindevents.php';

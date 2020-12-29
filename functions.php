@@ -9,6 +9,7 @@ define('THEME_VERSION', '2.0.0');
 /*------------------------------------*\
     External Modules/Files
 \*------------------------------------*/
+include 'inc/blocks.php';
 include 'inc/mobile-detect.php';
 include 'inc/content-functions.php';
 include 'mindevents/mindevents.php';
@@ -280,6 +281,39 @@ function mindblank_nav($location)
     )
   );
 }
+
+
+/**
+* Allow SVG files upload in WordPress Media panel
+*
+* By default the WordPress doesn't allows you to upload SVG files.
+* This function is used to remove that restriction so that you can
+* upload SVG files.
+*
+*/
+function mind_fix_svg_upload_error($mimes) {
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+}
+
+
+
+
+/**
+* Remove default WordPress login  logo link
+*
+* This function removes the default link on the login screen logo.
+* Makes this logo go to homepage of the website.
+*
+*/
+function cmind_login_logo_url($url) {
+	return '"' . home_url() . '"';
+}
+
+add_filter( 'login_headerurl', 'mind_login_logo_url' );
+
+
+
 
 /*  Add responsive container to embeds
 /* ------------------------------------ */
@@ -587,6 +621,7 @@ add_action('wp_enqueue_scripts', 'mindblank_styles'); // Add Theme Stylesheet
 add_action('init', 'register_mind_menu'); // Add mind Blank Menu
 add_filter( 'get_the_archive_title', 'mindblank_remove_prepend_archives');
 
+add_filter('upload_mimes', 'mind_fix_svg_upload_error');
 
 add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
 add_action('init', 'mindwp_pagination'); // Add our mind Pagination
@@ -625,7 +660,9 @@ add_filter('image_send_to_editor', 'remove_width_attribute', 10); // Remove widt
 add_filter( 'embed_oembed_html', 'mind_embed_html', 10, 3 );
 add_filter( 'video_embed_html', 'mind_embed_html' ); // Jetpack
 
-
+// Elminiate the emoji script
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
 // Remove Filters
 remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt altogether
@@ -637,7 +674,43 @@ add_shortcode('mind_shortcode_demo_2', 'mind_shortcode_demo_2'); // Place [mind_
 // Shortcodes above would be nested like this -
 // [mind_shortcode_demo] [mind_shortcode_demo_2] Here's the page title! [/mind_shortcode_demo_2] [/mind_shortcode_demo]
 
-
+//SVG UPLOADS
+add_action( 'admin_head', 'mindblank_fix_svg' );
+add_filter( 'upload_mimes', 'mindblank_mime_types' );
+add_filter( 'wp_check_filetype_and_ext', 'mindblank_check_filetype', 10, 4 );
 /*------------------------------------*\
     ShortCode Functions
 \*------------------------------------*/
+
+// Allow SVG
+function mindblank_check_filetype($data, $file, $filename, $mimes) {
+
+  global $wp_version;
+  if ( $wp_version !== '4.7.1' ) {
+     return $data;
+  }
+
+  $filetype = wp_check_filetype( $filename, $mimes );
+
+  return [
+      'ext'             => $filetype['ext'],
+      'type'            => $filetype['type'],
+      'proper_filename' => $data['proper_filename']
+  ];
+
+};
+
+function mindblank_mime_types( $mimes ){
+  $mimes['svg'] = 'image/svg+xml';
+  return $mimes;
+}
+
+
+function mindblank_fix_svg() {
+  echo '<style type="text/css">
+        .attachment-266x266, .thumbnail img {
+             width: 100% !important;
+             height: auto !important;
+        }
+        </style>';
+}

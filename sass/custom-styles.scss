@@ -19,11 +19,6 @@ body {
   -ms-transition: opacity 250ms ease-out;
   -o-transition: opacity 250ms ease-out;
   transition: opacity 250ms ease-out;
-  &.admin-bar {
-    header.top-header{
-      padding-top: 32px;
-    }
-  }
 }
 
 body.fade-in {
@@ -32,6 +27,7 @@ body.fade-in {
 
 img {
   max-width: 100%;
+  height: auto;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Courier Prime', monospace;

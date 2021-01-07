@@ -10,10 +10,7 @@
   .tml-field {
     @extend .form-control;
   }
-  .tml-field-wrap {
-    margin: 0;
-    @extend .form-row;
-  }
+
   .tml-checkbox {
     margin: 15px;
   }

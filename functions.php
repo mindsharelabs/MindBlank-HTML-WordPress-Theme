@@ -106,7 +106,7 @@ function mind_fix_svg_upload_error($mimes) {
 * Makes this logo go to homepage of the website.
 *
 */
-function cmind_login_logo_url($url) {
+function mind_login_logo_url($url) {
 	return '"' . home_url() . '"';
 }
 

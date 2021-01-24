@@ -12,17 +12,32 @@
       li {
         margin: 0;
         padding: 20px 0 0 0;
+        float: left;
+        width: 100%;
         .gfield_description {
           font-size: .8em;
           margin-bottom: 15px;
         }
         label {
           text-transform: uppercase;
-          color: lighten($dark, 20%); 
+          color: lighten($dark, 20%);
           font-size: .7em;
           line-height: 1.8em;
           padding-left: 0;
           margin: 0;
+        }
+        &.hidden_label {
+          label {
+            @extend .visually-hidden;
+          }
+        }
+        &.gf_left_half {
+          float: left;
+          width: calc(50% - 10px);
+        }
+        &.gf_right_half {
+          float: right;
+          width: 50%;
         }
         label.gfield_label {
           text-transform: unset;
@@ -148,7 +163,11 @@
   }
   .gform_footer {
     text-align: right;
-
+    input.button {
+      @extend .btn;
+      @extend .btn-primary;
+      @extend .mt-2;
+    }
   }
   .gf_progressbar_wrapper {
     .gf_progressbar {
@@ -201,4 +220,43 @@
     @extend .table;
     @extend .table-sm;
   }
+}
+
+
+
+
+@media (max-width: 576px) {
+  .gform_wrapper {
+
+    .gform_body {
+      ul {
+        li {
+          &.gf_left_half {
+            float: unset;
+            width: 100%;
+          }
+          &.gf_right_half {
+            float: unset;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Small styles - default: 480px <= x <= 991px
+@media (min-width: 576px) and (max-width: 992px) {
+
+
+}
+
+// Medium styles - default: 992px <= x <= 1199px
+@media (min-width: 992px) and (max-width: 1200px) {
+
+}
+
+// Large styles - default: 1200px <= x
+@media (min-width: 1200px) {
+
 }

@@ -491,12 +491,8 @@ add_shortcode('mind_shortcode_demo_2', 'mind_shortcode_demo_2'); // Place [mind_
 // [mind_shortcode_demo] [mind_shortcode_demo_2] Here's the page title! [/mind_shortcode_demo_2] [/mind_shortcode_demo]
 
 //SVG UPLOADS
-add_action( 'admin_head', 'mindblank_fix_svg' );
 add_filter( 'upload_mimes', 'mindblank_mime_types' );
 add_filter( 'wp_check_filetype_and_ext', 'mindblank_check_filetype', 10, 4 );
-/*------------------------------------*\
-    ShortCode Functions
-\*------------------------------------*/
 
 // Allow SVG
 function mindblank_check_filetype($data, $file, $filename, $mimes) {
@@ -519,14 +515,4 @@ function mindblank_check_filetype($data, $file, $filename, $mimes) {
 function mindblank_mime_types( $mimes ){
   $mimes['svg'] = 'image/svg+xml';
   return $mimes;
-}
-
-
-function mindblank_fix_svg() {
-  echo '<style type="text/css">
-        .attachment-266x266, .thumbnail img {
-             width: 100% !important;
-             height: auto !important;
-        }
-        </style>';
 }

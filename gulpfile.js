@@ -8,7 +8,7 @@ gulp.task('styles', () => {
       .pipe(sourcemaps.init())
       .pipe(sass({
         includePaths: ['sass/**/*.scss'],
-        outputStyle: 'compressed'
+        outputStyle: 'compressed' //nested, expanded, compact, compressed
       }).on('error', sass.logError))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest('./css/'))
@@ -19,7 +19,7 @@ gulp.task('block-styles', () => {
     return gulp.src('sass/block-styles.scss')
       .pipe(sourcemaps.init())
       .pipe(sass({
-        outputStyle: 'compressed'
+        outputStyle: 'compressed'//nested, expanded, compact, compressed
       }).on('error', sass.logError))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest('./css/'))
@@ -29,7 +29,7 @@ gulp.task('slick-styles', () => {
     return gulp.src('sass/slick.scss')
       .pipe(sourcemaps.init())
       .pipe(sass({
-        outputStyle: 'compressed'
+        outputStyle: 'compressed'//nested, expanded, compact, compressed
       }).on('error', sass.logError))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest('./css/'))

@@ -1,8 +1,11 @@
 .gform_wrapper {
   .validation_error {
-    @extend .mt-3;
+    margin-top: 1rem;
     @extend .alert;
     @extend .alert-danger;
+  }
+  .gform_heading {
+    margin-botton: 1rem;
   }
   .gform_body {
     ul {
@@ -14,6 +17,7 @@
         padding: 20px 0 0 0;
         float: left;
         width: 100%;
+
         .gfield_description {
           font-size: .8em;
           margin-bottom: 15px;
@@ -28,7 +32,7 @@
         }
         &.hidden_label {
           label {
-            @extend .visually-hidden;
+            display: none;
           }
         }
         &.gf_left_half {
@@ -54,11 +58,18 @@
             display: block;
           }
         }
-        .ginput_container_fileupload {
-          input {
+
+        .ginput_container_fileupload,
+        .ginput_container_list,
+        .ginput_container_date,
+        .ginput_container_textarea,
+        .ginput_container_post_excerpt,
+        .ginput_container_post_tags {
+          input, textarea {
             @extend .form-control;
           }
         }
+
         .clear-multi {
           display: flex;
           .ginput_container_time {
@@ -166,7 +177,7 @@
     input.button {
       @extend .btn;
       @extend .btn-primary;
-      @extend .mt-2;
+      margin-top: 1rem;
     }
   }
   .gf_progressbar_wrapper {
@@ -174,15 +185,16 @@
       @extend .progress;
       .gf_progressbar_percentage {
         @extend .progress-bar;
-        @extend .bg-success;
+        @extend .bg-success !optional;
       }
     }
 
   }
   .screen-reader-text {
-    @extend .visually-hidden;
+    display: none;
   }
 }
+
 
 #ui-datepicker-div {
   background: #fff;

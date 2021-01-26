@@ -221,7 +221,7 @@ function mindblank_remove_prepend_archives ($title) {
 // Load mind Blank styles
 function mindblank_styles()
 {
-    wp_register_style('mindblankcssmin', get_template_directory_uri() . '/style.css', array(), '1.0');
+    wp_register_style('mindblankcssmin', get_template_directory_uri() . '/css/style.css', array(), '1.0');
     wp_enqueue_style('mindblankcssmin');
 
     wp_register_style('google-fonts', 'https://fonts.googleapis.com/css?family=Courier+Prime|Raleway:200,400,400i,700&display=swap', array(), THEME_VERSION);

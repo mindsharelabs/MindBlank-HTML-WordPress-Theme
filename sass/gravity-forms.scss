@@ -64,7 +64,9 @@
         .ginput_container_date,
         .ginput_container_textarea,
         .ginput_container_post_excerpt,
-        .ginput_container_post_tags {
+        .ginput_container_post_tags,
+        .ginput_container_email,
+        .ginput_container_phone {
           input, textarea {
             @extend .form-control;
           }

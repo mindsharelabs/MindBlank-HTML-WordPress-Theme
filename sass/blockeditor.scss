@@ -1,4 +1,11 @@
+.wp-block-code {
+  code {
 
+    white-space: unset;
+    overflow-wrap: break-word;
+    font-size: 12px;
+  }
+}
 .wc-block-grid, {
   .wp-block-button {
     a{
@@ -8,7 +15,7 @@
 
   }
 }
-.wp-block-image {
+.wp-block-image, figure {
   figcaption {
     @extend .small;
     @extend .text-center;
@@ -28,8 +35,8 @@ blockquote {
     padding: 0;
     max-width: 600px;
     margin: 0 auto;
-    border: 1px solid lighten($light-pink, 8%);
-    background-color: lighten($light-pink, 15%);
+    border: 1px solid lighten($light, 8%);
+    background-color: lighten($light, 15%);
     border-left-width: 8px;
     padding: 15px;
   }

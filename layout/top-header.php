@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-4 col-md-2 logo pt-1 pb-1 my-auto">
         <a href="<?php echo home_url(); ?>">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="MindBlank HTML 5" class="logo-img">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="<?php bloginfo( 'name' ); ?>" class="logo-img">
         </a>
       </div>
       <div class="col my-auto d-none d-md-block ">

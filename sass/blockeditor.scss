@@ -1,3 +1,13 @@
+.wp-block-cover {
+  max-height: 100vh;
+  &.alignleft {
+    float: left;
+    @extend .me-3;
+  }
+}
+.wp-block-cover-image, .wp-block-cover {
+  height: auto !important;
+}
 .wp-block-code {
   code {
 
@@ -28,15 +38,30 @@
     }
   }
 }
+.wp-caption-text {
+  @extend .small;
+  @extend .text-center;
+}
+figure.wp-block-table {
+  table {
+    @extend .table;
+    @extend .table-striped;
+    @extend .table-hover;
+  }
+}
+table {
+  @extend .table;
+  @extend .table-striped;
+  @extend .table-hover;
+}
 blockquote {
   padding: 0;
   margin: 0;
+  margin-bottom: 20px;
   &.wp-block-quote {
     padding: 0;
-    max-width: 600px;
-    margin: 0 auto;
-    border: 1px solid lighten($light, 8%);
-    background-color: lighten($light, 15%);
+    border: 1px solid darken($light, 3%);
+    background-color: lighten($light, 6%);
     border-left-width: 8px;
     padding: 15px;
   }
@@ -95,4 +120,13 @@ blockquote {
 .calendly-inline-widget  {
   min-height: 800px;
   height: 800px !important;
+}
+
+
+
+img, div {
+  &.aligncenter {
+    margin: 0 auto;
+    display: inherit;
+  }
 }

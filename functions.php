@@ -374,13 +374,6 @@ function remove_thumbnail_dimensions($html)
     return $html;
 }
 
-// Custom Gravatar in Settings > Discussion
-function mindblankgravatar($avatar_defaults)
-{
-    $myavatar = get_template_directory_uri() . '/img/gravatar.jpg';
-    $avatar_defaults[$myavatar] = "Custom Gravatar";
-    return $avatar_defaults;
-}
 
 // Threaded Comments
 function enable_threaded_comments()
@@ -392,13 +385,6 @@ function enable_threaded_comments()
     }
 }
 
-// Custom Gravatar in Settings > Discussion
-function mindblank_gravatar ($avatar_defaults)
-{
-    $avatar = get_template_directory_uri() . '/img/avatar.jpg';
-    $avatar_defaults[$avatar] = "Custom Avatar";
-    return $avatar_defaults;
-}
 
 
 // define the embed_html callback
@@ -453,8 +439,6 @@ remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 
 // Add Filters
 add_filter( 'embed_html', 'mindblank_filter_embed_html', 10, 4 ); //Filters embeded posts HTML to remove WP Logo
-add_filter('avatar_defaults', 'mindblank_gravatar'); // Custom Gravatar in Settings > Discussion
-add_filter('avatar_defaults', 'mindblankgravatar'); // Custom Gravatar in Settings > Discussion
 add_filter('body_class', 'add_slug_to_body_class'); // Add slug to body class (Starkers build)
 add_filter('widget_text', 'do_shortcode'); // Allow shortcodes in Dynamic Sidebar
 add_filter('widget_text', 'shortcode_unautop'); // Remove <p> tags in Dynamic Sidebars (better!)

@@ -26,7 +26,7 @@ endif;
 					?>
 				</div>
 
-				<div class="col-12 col-md-8 my-md-auto my-4 text-md-end">
+				<div class="col-12 my-md-auto my-4">
 					<?php mindblank_nav('footer-menu'); ?>
 				</div>
 

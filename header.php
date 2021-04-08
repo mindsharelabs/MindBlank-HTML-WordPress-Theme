@@ -48,8 +48,10 @@
   endif;
 
 include 'layout/top-header.php';
-if(is_search() || is_404()) :
+if(is_search()) :
   include 'layout/search-header.php';
+elseif(is_404()) :
+
 elseif(is_archive()) :
   include 'layout/archive-header.php';
 else :

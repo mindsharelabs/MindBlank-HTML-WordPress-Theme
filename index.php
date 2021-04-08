@@ -1,7 +1,5 @@
 <?php
 get_header();
-include 'layout/top-header.php';
-include 'layout/brand.php';
 ?>
 <main role="main" aria-label="Content" <?php post_class(); ?>>
   <?php
@@ -23,5 +21,5 @@ include 'layout/brand.php';
   echo '</section>';
   ?>
 </main>
-<?php include 'layout/top-footer.php';
+<?php
 get_footer();

@@ -28,6 +28,47 @@ function mind_format_phone($phoneNumber) {
 }
 
 
+add_filter( 'render_block', 'mapi_block_wrapper', 10, 2 );
+function mapi_block_wrapper( $block_content, $block ) {
+  $noWrapper = array(
+    'core/cover',
+    // 'core/button',
+    'acf/leep-full-width-notice',
+    'acf/container'
+  );
+  if(!in_array($block['blockName'], $noWrapper)) :
+    $content = '<div class="container">';
+      $content .= '<div class="row">';
+        $content .= '<div class="col-12">';
+          $content .= $block_content;
+        $content .= '</div>';
+      $content .= '</div>';
+    $content .= '</div>';
+  else :
+    return $block_content;
+  endif;
+  return $content;
+
+
+
+
+}
+
+
+add_action( 'pre_get_posts', function ($query) {
+    if ( !is_admin() && $query->is_main_query() && is_post_type_archive( 'team' ) ) {
+      $query->set( 'posts_per_page', -1 );
+    }
+});
+
+/**
+ * Gutenberg scripts and styles
+ *
+ */
+function be_gutenberg_scripts() {
+	wp_enqueue_script( 'theme-editor', get_template_directory_uri() . '/js/editor.js', array( 'wp-blocks', 'wp-dom' ), THEME_VERSION, true );
+}
+add_action( 'enqueue_block_editor_assets', 'be_gutenberg_scripts' );
 
 /**
  * Gravity Forms Bootstrap Styles

@@ -1,3 +1,4 @@
+@import "custom-variables";
 /* Slider */
 
 .slick-slider {
@@ -106,19 +107,6 @@
 @charset "UTF-8";
 
 // Default Variables
-
-// Slick icon entity codes outputs the following
-// "\2190" outputs ascii character "←"
-// "\2192" outputs ascii character "→"
-// "\2022" outputs ascii character "•"
-$primary:       #3E5678;
-$secondary:     #5D825F;
-$terciary:      #A36B14;
-$success:       $secondary;
-
-$light:         #FFF3D8;
-$grey:          #F4F4F4;
-$dark:          #707070;
 
 $slick-font-path: "./fonts/" !default;
 $slick-font-family: FontAwesome !default;

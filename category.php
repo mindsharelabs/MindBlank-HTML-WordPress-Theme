@@ -1,9 +1,6 @@
-<?php get_header();
-include 'layout/top-header.php';
-?>
+<?php get_header();?>
 
 <main role="main" aria-label="Content">
-  <?php include 'layout/category-header.php'; ?>
   <section <?php post_class('container'); ?>>
     <div class="row">
       <?php
@@ -17,5 +14,5 @@ include 'layout/top-header.php';
     </div>
   </section>
 </main>
-<?php include 'layout/top-footer.php';
+<?php
 get_footer();

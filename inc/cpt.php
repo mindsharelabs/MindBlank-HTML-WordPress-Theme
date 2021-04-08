@@ -3,7 +3,7 @@
     Custom Post Types
 \*------------------------------------*/
 
-add_action('init', 'create_post_type_mind'); // Add our mind Blank Custom Post Type
+// add_action('init', 'create_post_type_mind'); // Add our mind Blank Custom Post Type
 function create_post_type_mind()
 {
     register_taxonomy_for_object_type('category', 'example-post-type'); // Register Taxonomies for Category
@@ -19,7 +19,7 @@ function create_post_type_mind()
                 'edit_item' => __('Edit Post', 'mindblank'),
                 'new_item' => __('New Post', 'mindblank'),
                 'view' => __('View Post', 'mindblank'),
-                'view_item' => __('View PPost', 'mindblank'),
+                'view_item' => __('View Post', 'mindblank'),
                 'search_items' => __('Search Posts', 'mindblank'),
                 'not_found' => __('No Posts found', 'mindblank'),
                 'not_found_in_trash' => __('No Posts found in Trash', 'mindblank')

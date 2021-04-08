@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+  <g id="Layer_1" data-name="Layer 1">
+    <rect x="500" y="500" width="500" height="500" style="fill: #a5b7d3"/>
+    <rect y="500" width="499.136" height="500" style="fill: #8897af"/>
+    <rect x="500.863" width="500" height="500" style="fill: #657996"/>
+    <rect x="0.863" width="500" height="500" style="fill: #495972"/>
+    <rect x="275.547" y="406.314" width="187.372" height="187.372" transform="translate(-245.407 407.534) rotate(-45)" style="fill: #f3e6c7"/>
+    <rect x="408.039" y="273.822" width="187.372" height="187.372" transform="translate(-112.915 462.414) rotate(-45)" style="fill: #e8d5a7"/>
+    <rect x="408.039" y="538.806" width="187.372" height="187.372" transform="translate(-300.287 540.026) rotate(-45)" style="fill: #e0bf6d"/>
+    <rect x="540.532" y="406.314" width="187.372" height="187.372" transform="translate(-167.795 594.906) rotate(-45)" style="fill: #d2a63b"/>
+  </g>
+</svg>

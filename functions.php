@@ -4,7 +4,7 @@
  * URL: https://mind.sh/are | @mindblank
  *
  */
-define('THEME_VERSION', '2.0.0');
+define('THEME_VERSION', '3.0.0');
 /*------------------------------------*\
     External Modules/Files
 \*------------------------------------*/
@@ -26,7 +26,8 @@ if (!isset($content_width)) {
 }
 
 if (function_exists('add_theme_support')) {
-  add_image_size( 'loop-thumb', 350, 150, true);
+    add_image_size( 'loop-thumb', 350, 150, true);
+
     // Add Thumbnail Theme Support
     add_theme_support('post-thumbnails');
 
@@ -38,6 +39,7 @@ if (function_exists('add_theme_support')) {
 
     // Localisation Support
     load_theme_textdomain('mindblank', get_template_directory() . '/languages');
+
 }
 
 /*------------------------------------*\
@@ -153,6 +155,10 @@ function mindblank_conditional_scripts()
     //     // Conditional script(s)
     //
     // }
+    if(is_404()) :
+      wp_register_style('404-styles', get_template_directory_uri() . '/css/404-styles.css', array(), THEME_VERSION);
+      wp_enqueue_style('404-styles');
+    endif;
 }
 
 
@@ -221,19 +227,19 @@ function mindblank_remove_prepend_archives ($title) {
 // Load mind Blank styles
 function mindblank_styles()
 {
-    wp_register_style('mindblankcssmin', get_template_directory_uri() . '/css/style.css', array(), '1.0');
+    wp_register_style('mindblankcssmin', get_template_directory_uri() . '/css/style.css', array(), THEME_VERSION);
     wp_enqueue_style('mindblankcssmin');
 
-    wp_register_style('google-fonts', 'https://fonts.googleapis.com/css?family=Courier+Prime|Raleway:200,400,400i,700&display=swap', array(), THEME_VERSION);
+    wp_register_style('typekit-fonts', 'https://use.typekit.net/iax7txx.css', array(), THEME_VERSION);
 		add_action('wp_head', function() {
-			echo '<link rel="preload" href="https://fonts.googleapis.com">';
+			echo '<link rel="preload" href="https://use.typekit.net/">';
 		});
 
 
 }
 
 function mind_add_footer_styles() {
-		wp_enqueue_style('google-fonts');
+		wp_enqueue_style('typekit-fonts');
 };
 add_action( 'get_footer', 'mind_add_footer_styles' );
 
@@ -243,7 +249,8 @@ function register_mind_menu()
 {
     register_nav_menus(array( // Using array to specify more menus if needed
         'header-menu' => __('Header Menu', 'mindblank'), // Main Navigation
-        'sidebar-menu' => __('Sidebar Menu', 'mindblank'), // Sidebar Navigation
+        'footer-menu' => __('Footer Menu', 'mindblank'), // Sidebar Navigation
+        'mobile-menu' => __('Mobile Menu', 'mindblank'), // Sidebar Navigation
     ));
 }
 
@@ -357,7 +364,7 @@ add_filter('excerpt_length', 'mindblank_excerpt_length', 999);
 function mind_blank_view_article($more)
 {
     global $post;
-    return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'mindblank') . '</a>';
+    return '...';
 }
 
 

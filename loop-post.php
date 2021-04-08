@@ -21,7 +21,7 @@ $cats = wp_get_post_categories(get_the_id(), array('fields' => 'id=>name'));
       if(count($cats) > 0) :
         echo '<div class="categories mb-2 w-100">';
         foreach ($cats as $key => $cat) :
-          echo '<small class="text-muted pr-2">';
+          echo '<small class="text-muted pe-2">';
             echo '<a href="' . get_term_link($key, 'category') . '" title="' . $cat . '">' . $cat . '</a>';
           echo '</small>';
         endforeach;

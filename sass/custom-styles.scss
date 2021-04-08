@@ -7,8 +7,8 @@
 
 body {
   opacity: 0;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 400;
+  font-family: ronnia, sans-serif;
+  font-weight: 300;
   font-size: 20px;
   color: $dark;
   -moz-osx-font-smoothing: grayscale; // enable font-smoothing for browsers that support it
@@ -30,25 +30,37 @@ img {
   height: auto;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Courier Prime', monospace;
+  font-family: ronnia, sans-serif;
+  font-weight: 200;
+  color: $primary;
+  &.page-title {
+    font-weight: 800;
+  }
+  &.sub-title {
+    font-weight: 400;
+  }
 }
-p + h1 {
+strong {
+  font-weight: 600;
+}
 
-  margin-top: 5em;
+p + h1 {
+  margin-top: 2em;
 }
 p + h2 {
-  margin-top: 4em;
+  margin-top: 1.8em;
 }
 p + h3 {
-  margin-top: 3em;
+  margin-top: 1.4em;
 }
 p + h4 {
-  margin-top: 2em;
+  margin-top: 1em;
 }
 h1 {
   margin-bottom: 12px;
 }
 h2 {
+  font-size: 1.8em;
   margin-bottom: 9px;
 }
 h3 {
@@ -65,25 +77,78 @@ hr {
 }
 a {
   color: $secondary;
+  text-decoration: none;
+  @include transition(400ms);
   &:hover {
-    color: darken($secondary, 40%);
-    text-decoration: none;
+    color: darken($secondary, 20%);
+    text-decoration: underline;
+    @include transition(100ms);
   }
 }
-
+main {
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+  }
+}
+.btn {
+  background: linear-gradient(90deg, $primary, $secondary);
+  @include transition(400ms);
+  color: #fff;
+  &:hover {
+    color: $light;
+    background: linear-gradient(90deg, darken($primary, 10%), darken($secondary, 10%));
+    @include transition(100ms);
+  }
+}
+.card {
+  border: none;
+  border-top: 10px solid $primary;
+  -webkit-box-shadow: 0 0 10px 0 rgba(1,1,1,.2);
+  box-shadow: 0 0 10px 0 rgba(1,1,1,.2);
+  .card-footer {
+    background: none;
+    border: none;
+    a {
+      text-decoration: none;
+      font-size: 1.1em;
+    }
+  }
+}
 //Navigation Styles
 header.top-header {
-  position: sticky;
-  background: #fff;
+  position: fixed;
   top: 0;
   opacity: 1;
   left: 0;
   right: 0;
   z-index: 9999;
   opacity: 1;
-  -webkit-box-shadow: 0 1px 5px 0 rgba(1,1,1,.2);
-  box-shadow: 0 1px 5px 0 rgba(1,1,1,.2);
   @include transition(500ms);
+  .logo {
+    max-width: 255px;
+    a {
+      img, svg {
+        max-width: 100%;
+      }
+    }
+    @include transition(500ms);
+    .hide {
+      @include transition(500ms);
+    }
+
+  }
+  &.scrolled {
+    background: linear-gradient(90deg, $primary, $secondary);
+    .logo {
+      max-width: 175px;
+      @include transition(500ms);
+      .hide {
+        opacity: 0;
+        @include transition(500ms);
+      }
+    }
+
+  }
   nav.header-menu {
     ul {
       margin: 0;
@@ -97,24 +162,24 @@ header.top-header {
       font-size: .9em;
       white-space: nowrap;
       li {
-        margin: 0;
+        margin: 5px;
         padding: 0;
         position: relative;
         a {
+          color: $light;
           padding: 5px 10px;
           display: block;
+          text-decoration: none;
+          border-bottom: 3px solid transparent;
+          @include transition(500ms);
         }
-        &:first-child {
+        &.current_page_item, &:hover {
           a {
-            padding-right: 0;
+            border-bottom: 3px solid $light;
+            @include transition(100ms);
           }
         }
-        &.current_page_item {
-          a {
-            color: darken($secondary, 40%);
-          }
-        }
-        &.menu-item-has-children {
+        &.menu-item-has-children, &.page_item_has_children {
           a {
             padding-right: 25px;
           }
@@ -134,12 +199,14 @@ header.top-header {
             ul.children, ul.sub-menu {
               height: auto;
               li {
+                margin: 0;
                 a {
-                  padding: 10px 8px; 
+                  margin: 0;
+                  padding: 10px 8px;
                   display: flex;
+                  color: $primary;
                   &:hover {
-                    background-color: $primary;
-                    color: #fff;
+                    color: darken($primary, 20%);
                   }
                 }
 
@@ -170,24 +237,283 @@ header.top-header {
     }
   }
 }
+
+#mobileMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top:0;
+  height: 0;
+  overflow: hidden;
+  z-index: 19999;
+  background: $primary;
+  @include transition(100ms);
+  &.show {
+    height: 100vh;
+    opacity: 1;
+    @include transition(200ms);
+  }
+  .mobile-logo {
+
+  }
+  ul {
+    padding: 30px 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+    list-style: none;
+    li {
+      display: block;
+      width: 100%;
+      margin: 1px 0;
+      @include transition(100ms);
+      a {
+        padding: 8px 16px;
+        display: block;
+        width: 100%;
+        color: $light;
+        text-decoration: none;
+        @include transition(200ms);
+        &:hover {
+          color: $light;
+          text-decoration: underline;
+          @include transition(100ms);
+        }
+      }
+      ul.sub-menu {
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        width: unset;
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 10px 20px;
+        background: darken($primary, 20%);
+        li {
+          flex: 1;
+          a {
+            background: none;
+          }
+        }
+      }
+      &.expanded {
+        ul.sub-menu {
+          max-height: 900px;
+          @include transition(200ms);
+        }
+      }
+    }
+  }
+
+
+}
+#mobileMenuToggle {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $light;
+  color: $primary;
+  padding: 5px;
+  border-radius: 40px;
+  width: 70px;
+  height: 70px;
+  z-index: 100000;
+
+  svg {
+    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    path {
+      transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
+      stroke-dasharray 500ms cubic-bezier(0.4, 0, 0.2, 1),
+      stroke-dashoffset 500ms cubic-bezier(0.4, 0, 0.2, 1);
+      &:nth-child(1) {
+        transform-origin: 36% 40%;
+      }
+      &:nth-child(2) {
+        stroke-dasharray: 29 299;
+      }
+      &:nth-child(3) {
+        transform-origin: 35% 63%;
+      }
+      &:nth-child(4) {
+        stroke-dasharray: 29 299;
+      }
+      &:nth-child(5) {
+        transform-origin: 61% 52%;
+      }
+      &:nth-child(6) {
+        transform-origin: 62% 52%;
+      }
+    }
+  }
+  &.active svg {
+    transform: rotate(90deg);
+    path{
+      &:nth-child(1) {
+        transform: translateX(9px) translateY(1px) rotate(45deg);
+      }
+      &:nth-child(2) {
+        stroke-dasharray: 225 299;
+        stroke-dashoffset: -72px;
+      }
+      &:nth-child(3) {
+        transform: translateX(9px) translateY(1px) rotate(-45deg);
+      }
+      &:nth-child(4) {
+        stroke-dasharray: 225 299;
+        stroke-dashoffset: -72px;
+      }
+      &:nth-child(5) {
+        transform: translateX(9px) translateY(1px) rotate(-45deg);
+      }
+      &:nth-child(6) {
+        transform: translateX(9px) translateY(1px) rotate(45deg);
+      }
+    }
+  }
+
+}
+
 header.blog-header {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   background-blend-mode: luminosity;
 }
-// Footer
-footer.footer {
-  background: $dark;
-  color: #fff;
 
-  padding-top: 40px;
-  a {
-    color: $light;
+article.team {
+  .team-thumbnail {
+    img {
+      border: 5px solid $primary;
+    }
+  }
+  .icons {
+    display: flex;
+    justify-content: flex-start;
+    a {
+      text-decoration: none;
+      display: block;
+      padding: 5px;
+    }
   }
 }
 
-footer.bottom-footer {
+section.archive-team {
+  .card {
+    border-top: 0;
+    -webkit-box-shadow: none;
+    box-shadow:  none;
+    text-align: center;
+    .card-header {
+      border: none;
+      padding: 15px 45px;
+      @include transition(200ms);
+      img {
+        border: 5px solid $primary;
+        @include transition(200ms);
+      }
+      &:hover {
+        padding: 0px 30px;
+        @include transition(100ms);
+        img {
+          border: 10px solid $primary;
+          @include transition(100ms);
+        }
+      }
+    }
+    .card-body {
+      h3.team-name {
+        font-weight: 800;
+        a {
+          text-decoration: none;
+          font-size: .85em;
+        }
+      }
+      h4.team-title {
+        font-size: .8em;
+        color: $dark;
+        display: block;
+        min-height: 80px;
+        line-height: 20px;
+      }
+      .team-bio {
+        font-size: .85em;
+        line-height: 1.1em;
+        color: $dark;
+      }
+      .icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        a {
+          text-decoration: none;
+          display: block;
+          padding: 5px;
+        }
+      }
+    }
+  }
+}
+#comments {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+  }
+}
+// Footer
+footer.footer {
+  color: #fff;
+  padding-top: 40px;
+  a {
+    color: $light;
+    text-decoration: none;
+    &:hover {
+      color: darken($light, 10%);
+      text-decoration: underline;
+    }
+  }
+  .copyright {
+    font-size: .8em;
+  }
+  ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    line-height: 1.1em;
+    li {
+      margin: 0 0 0 10px;
+      padding: 0;
+      display: block;
+      a {
+        display: block;
+        text-decoration: none;
+        border-bottom: 3px solid transparent;
+        @include transition(500ms);
+        &:hover {
+          border-bottom: 3px solid $light;
+          text-decoration: none;
+          @include transition(500ms);
+        }
+      }
+      ul.children {
+        display: none;
+      }
+    }
+  }
 }
 
 .bypostauthor > article .fn:before {
@@ -227,7 +553,16 @@ p.wp-caption-text {
   margin: 0 0 15px 0;
 }
 
-
+section.brand, section.archive-header {
+  background-size: cover;
+  position: relative;
+  padding-top: 150px;
+  margin-bottom: 30px;
+  color: $light;
+  &.archive-header {
+    background: linear-gradient(90deg, $primary, $secondary);
+  }
+}
 section.blog, section.post {
   article {
     span.posted-date {
@@ -334,8 +669,9 @@ code {
 
 // Footer Styles
 .mindshare-credit {
+  font-size: .8em;
   span.crafted {
-    font-size: 11px;
+
     color: #fff;
     display: block;
     margin-bottom: -5px;

@@ -1,41 +1,41 @@
 <?php
 if (has_post_thumbnail()) :
   if(wp_is_mobile()) :
-    $image_url = aq_resize(get_the_post_thumbnail_url(), 560, 1300, true, true);
+    $f_image = get_the_post_thumbnail_url( get_option( 'page_for_posts' ), 'page-header');
   else :
-    $image_url = aq_resize(get_the_post_thumbnail_url(), 1600, 750, true, true);
+    $f_image = get_the_post_thumbnail_url( get_option( 'page_for_posts' ), 'page-header-short');
   endif;
-  $background = 'style="background-image: url(' . $image_url . ')"';
 else :
-  $background = null;
+  $f_image = null;
+endif;
+?>
+<style>
+section.brand {
+  background: linear-gradient(90deg, rgba(214, 212, 172, <?php echo ($f_image ? '0.7' : 1); ?>), rgba(138, 141, 127,<?php echo ($f_image ? '0.9' : 1); ?>)), url("<?php echo $f_image; ?>");
+}
+</style>
+<?php
+
+if ( is_front_page() && is_home() ) :
+  // Default homepage
+  $title = get_bloginfo('name');
+elseif ( is_front_page()) :
+  // Static homepage
+  $title = get_bloginfo('name');
+elseif ( is_home()) :
+  // Blog page
+  $title = get_the_title( get_option( 'page_for_posts' ) );
+else :
+  // Everything else
+  $title = get_the_title(get_the_id());
 endif;
 
-
-
-
-echo '<header class="blog-header bg-light pt-5 pb-5 mb-4" ' . $background . '>';
-  echo '<div class="container pt-5 pb-5">';
+echo '<section class="brand">';
+  echo '<div class="container py-5">';
     echo '<div class="row">';
-      echo '<div class="col-12">';
-
-      if ( is_front_page() && is_home() ) :
-        // Default homepage
-
-      elseif ( is_front_page()) :
-        // Static homepage
-
-      elseif ( is_home()) :
-        // Blog page
-
-      else :
-        // Everything else
-        echo '<div class="header-title w-100">';
-          echo '<h1 class="highlight display-4 text-uppercase ' . ($background ? 'text-white' : '') .'">' . get_the_title() . '</h1>';
-        echo '</div>';
-      endif;
-
-
+      echo '<div class="col-12 my-auto">';
+        echo '<h1 class="page-title text-white">' . $title . '</h1>';
       echo '</div>';
     echo '</div>';
   echo '</div>';
-echo '</header>';
+echo '</section>';

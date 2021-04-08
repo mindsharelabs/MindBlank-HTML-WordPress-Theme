@@ -15,7 +15,30 @@
 					var menuWidth = 400;
 				}
 
-        
+				$(window).scroll(function() {
+	        if ($(document).scrollTop() > 10) {
+	          $('header.header').addClass('scrolled');
+	        }
+	        else {
+	          $('header.header').removeClass('scrolled');
+	        }
+		    });
+
+				$(document).on('click', '#mobileMenuToggle', function() {
+					$('#mobileMenu').css('height', '100vh');
+					setTimeout( function() {
+            $('#mobileMenu').toggleClass('show');
+       		}, 100);
+
+
+					$(this).toggleClass('active');
+
+				});
+				$(document).on('click', '#mobileMenu li.menu-item-has-children', function(e) {
+					// e.preventDefault();
+					$(this).toggleClass('expanded');
+				})
+
 
         jQuery('body').addClass('fade-in');
 

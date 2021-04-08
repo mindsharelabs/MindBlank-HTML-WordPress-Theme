@@ -31,25 +31,63 @@
 //lg: 992px,
 //xl: 1200px
 @media (max-width: 576px) {
-  .display-4 {
-    font-size: 2.5rem;
+  body.admin-bar {
+    header.header {
+      margin-top: 46px;
+    }
+  }
+  footer.footer {
+    ul {
+      flex-direction: column;
+      justify-content: flex-start;
+    }
   }
 }
 
 // Small styles - default: 480px <= x <= 991px
 @media (min-width: 576px) and (max-width: 992px) {
-
+  body.admin-bar {
+    header.header {
+      margin-top: 46px;
+    }
+  }
+  footer.footer {
+    ul {
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+  }
 
 }
 
 // Medium styles - default: 992px <= x <= 1199px
 @media (min-width: 992px) and (max-width: 1200px) {
-
+  body.admin-bar {
+    header.header {
+      margin-top: 32px;
+    }
+  }
+  footer.footer {
+    ul {
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+  }
 }
 
 // Large styles - default: 1200px <= x
 @media (min-width: 1200px) {
-
+  body.admin-bar {
+    header.header {
+      margin-top: 32px;
+    }
+  }
+  footer.footer {
+    ul {
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+  }
 }
 
 /* Define xs styles after defaults so they take precedence */

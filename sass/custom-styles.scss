@@ -86,18 +86,8 @@ a {
   }
 }
 main {
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6 { 
     font-weight: 400;
-  }
-}
-.btn {
-  background: linear-gradient(90deg, $primary, $secondary);
-  @include transition(400ms);
-  color: #fff;
-  &:hover {
-    color: $light;
-    background: linear-gradient(90deg, darken($primary, 10%), darken($secondary, 10%));
-    @include transition(100ms);
   }
 }
 .card {
@@ -469,7 +459,7 @@ section.archive-team {
     list-style: none;
     margin: 0;
     padding: 0;
-    
+
   }
 }
 // Footer

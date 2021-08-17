@@ -25,15 +25,6 @@ gulp.task('block-styles', () => {
       .pipe(gulp.dest('./css/'))
 });
 
-gulp.task('slick-styles', () => {
-    return gulp.src('sass/slick.scss')
-      .pipe(sourcemaps.init())
-      .pipe(sass({
-        outputStyle: 'compressed'//nested, expanded, compact, compressed
-      }).on('error', sass.logError))
-      .pipe(sourcemaps.write('.'))
-      .pipe(gulp.dest('./css/'))
-});
 
 gulp.task('404-styles', () => {
     return gulp.src('sass/404-styles.scss')
@@ -48,7 +39,7 @@ gulp.task('404-styles', () => {
 
 gulp.task('watch', () => {
   gulp.watch('sass/**/*.scss', (done) => {
-    gulp.series(['styles', 'block-styles', 'slick-styles', '404-styles'])(done);
+    gulp.series(['styles', 'block-styles', '404-styles'])(done);
   });
 });
 

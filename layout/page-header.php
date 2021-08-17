@@ -8,13 +8,6 @@ if (has_post_thumbnail()) :
 else :
   $f_image = null;
 endif;
-?>
-<style>
-section.brand {
-  background: linear-gradient(90deg, rgba(214, 212, 172, <?php echo ($f_image ? '0.7' : 1); ?>), rgba(138, 141, 127,<?php echo ($f_image ? '0.9' : 1); ?>)), url("<?php echo $f_image; ?>");
-}
-</style>
-<?php
 
 if ( is_front_page() && is_home() ) :
   // Default homepage
@@ -28,14 +21,13 @@ elseif ( is_home()) :
 else :
   // Everything else
   $title = get_the_title(get_the_id());
-endif;
-
-echo '<section class="brand">';
-  echo '<div class="container py-5">';
-    echo '<div class="row">';
-      echo '<div class="col-12 my-auto">';
-        echo '<h1 class="page-title text-white">' . $title . '</h1>';
+  echo '<section class="brand">';
+    echo '<div class="container py-5">';
+      echo '<div class="row">';
+        echo '<div class="col-12 my-auto">';
+          echo '<h1 class="page-title">' . $title . '</h1>';
+        echo '</div>';
       echo '</div>';
     echo '</div>';
-  echo '</div>';
-echo '</section>';
+  echo '</section>';
+endif;

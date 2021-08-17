@@ -86,24 +86,11 @@ a {
   }
 }
 main {
-  h1, h2, h3, h4, h5, h6 { 
+  h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
   }
 }
-.card {
-  border: none;
-  border-top: 10px solid $primary;
-  -webkit-box-shadow: 0 0 10px 0 rgba(1,1,1,.2);
-  box-shadow: 0 0 10px 0 rgba(1,1,1,.2);
-  .card-footer {
-    background: none;
-    border: none;
-    a {
-      text-decoration: none;
-      font-size: 1.1em;
-    }
-  }
-}
+
 //Navigation Styles
 header.top-header {
   position: fixed;
@@ -127,18 +114,7 @@ header.top-header {
     }
 
   }
-  &.scrolled {
-    background: linear-gradient(90deg, $primary, $secondary);
-    .logo {
-      max-width: 175px;
-      @include transition(500ms);
-      .hide {
-        opacity: 0;
-        @include transition(500ms);
-      }
-    }
 
-  }
   nav.header-menu {
     ul {
       margin: 0;
@@ -224,6 +200,29 @@ header.top-header {
         }
       }
 
+    }
+  }
+  &.scrolled {
+    background-color: #fff;
+    .logo {
+      max-width: 175px;
+      @include transition(500ms);
+      .hide {
+        opacity: 0;
+        @include transition(500ms);
+      }
+    }
+    nav.header-menu {
+      ul {
+        li {
+          a {
+            color: $primary;
+            &:hover {
+              color: darken($primary, 15%);
+            }
+          }
+        }
+      }
     }
   }
 }

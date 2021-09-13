@@ -93,6 +93,7 @@ main {
 
 //Navigation Styles
 header.top-header {
+  background-color: $light;
   position: fixed;
   top: 0;
   opacity: 1;
@@ -116,6 +117,7 @@ header.top-header {
   }
 
   nav.header-menu {
+
     ul {
       margin: 0;
       padding: 0;
@@ -132,7 +134,7 @@ header.top-header {
         padding: 0;
         position: relative;
         a {
-          color: $light;
+          color: $dark;
           padding: 5px 10px;
           display: block;
           text-decoration: none;
@@ -140,10 +142,11 @@ header.top-header {
           @include transition(500ms);
         }
         &.current_page_item, &:hover {
-          a {
-            border-bottom: 3px solid $light;
+          & > a {
+            border-bottom: 3px solid $dark;
             @include transition(100ms);
           }
+
         }
         &.menu-item-has-children, &.page_item_has_children {
           a {
@@ -203,7 +206,7 @@ header.top-header {
     }
   }
   &.scrolled {
-    background-color: #fff;
+
     .logo {
       max-width: 175px;
       @include transition(500ms);

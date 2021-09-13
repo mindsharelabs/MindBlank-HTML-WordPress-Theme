@@ -26,26 +26,7 @@
 
 <body <?php body_class(); ?>>
 <div id="main-panel">
-  <?php
-  if(wp_is_mobile()) :
-    echo '<div class="mobileHeader">';
-      echo '<nav id="mobileMenu" class="mobile-nav">';
-
-        echo '<div class="mobile-logo my-4 mx-auto w-50">';
-          echo '<a href="' . home_url() . '">';
-            echo '<img src="' . get_template_directory_uri() . '/img/mindshare.svg" alt="' . get_bloginfo( "name" ) . '" class="logo-img">';
-          echo '</a>';
-        echo '</div>';
-        mindblank_nav('mobile-menu');
-      echo '</nav>';
-
-      echo '<nav id="mobileMenuToggle" class="menu-toggle">';
-        include get_template_directory() . '/img/menuToggle.svg';
-      echo '</nav>';
-    echo '</div>';
-
-
-  endif;
+<?php
 
 include 'layout/top-header.php';
 if(is_search()) :

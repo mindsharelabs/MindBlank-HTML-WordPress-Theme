@@ -128,15 +128,8 @@ function mindblank_header_scripts()
 {
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
 
-      wp_register_script('mindblankscripts-min', get_template_directory_uri() . '/js/scripts.js', array('bootstrap', 'slick-slider'), THEME_VERSION, true);
+      wp_register_script('mindblankscripts-min', get_template_directory_uri() . '/js/scripts.js', array('jquery'), THEME_VERSION, true);
       wp_enqueue_script('mindblankscripts-min');
-
-      wp_register_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.bundle.min.js', array('jquery'), '4.4.1');
-      wp_enqueue_script('bootstrap');
-
-      wp_register_script('slick-slider', get_template_directory_uri() . '/js/slick.min.js', array(), THEME_VERSION);
-      wp_enqueue_script('slick-slider');
-
 
       wp_register_script('fontawesome', 'https://kit.fontawesome.com/5bcc5329ee.js', array(), THEME_VERSION, true);
       wp_enqueue_script('fontawesome');

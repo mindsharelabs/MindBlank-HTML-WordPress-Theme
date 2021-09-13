@@ -9,6 +9,7 @@
 
       <div class="col d-none d-md-block ">
         <nav class="desktop header-menu text-right">
+          <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
           <?php mindblank_nav('header-menu'); ?>
         </nav>
       </div>

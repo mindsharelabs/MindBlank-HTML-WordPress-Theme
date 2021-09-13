@@ -4,7 +4,7 @@
  * URL: https://mind.sh/are | @mindblank
  *
  */
-define('THEME_VERSION', '3.0.0');
+define('THEME_VERSION', '3.1.0');
 /*------------------------------------*\
     External Modules/Files
 \*------------------------------------*/
@@ -20,10 +20,6 @@ include 'inc/aq_resize.php';
 /*------------------------------------*\
     Theme Support
 \*------------------------------------*/
-
-if (!isset($content_width)) {
-    $content_width = 900;
-}
 
 if (function_exists('add_theme_support')) {
     add_image_size( 'loop-thumb', 350, 150, true);
@@ -51,37 +47,28 @@ function mindblank_setup_theme() {
 }
 
 
-
-function mapi_post_edit() {
-  $post_type = get_post_type();
-  $post_type_obj = get_post_type_object($post_type);
-  edit_post_link( 'Edit this ' . $post_type_obj->labels->singular_name, '', '', get_the_id(), 'btn btn-sm btn-info mt-3 mb-3 float-right post-edit-link' );
-}
-
-
 // mind Blank navigation
-function mindblank_nav($location)
-{
-  wp_nav_menu(
-    array(
-      'theme_location' => $location,
-      'menu' => '',
-      'container' => 'div',
-      'container_class' => 'menu-{menu slug}-container',
-      'container_id' => '',
-      'menu_class' => 'menu',
-      'menu_id' => '',
-      'echo' => true,
-      'fallback_cb' => 'wp_page_menu',
-      'before' => '',
-      'after' => '',
-      'link_before' => '',
-      'link_after' => '',
-      'items_wrap' => '<ul>%3$s</ul>',
-      'depth' => 2,
-      'walker' => ''
-    )
+function mindblank_nav($location, $args = array()){
+  $defaults = array(
+    'theme_location' => $location,
+    'menu' => '',
+    'container' => 'div',
+    'container_class' => 'menu-{menu slug}-container',
+    'container_id' => '',
+    'menu_class' => 'menu',
+    'menu_id' => '',
+    'echo' => true,
+    'fallback_cb' => 'wp_page_menu',
+    'before' => '',
+    'after' => '',
+    'link_before' => '',
+    'link_after' => '',
+    'items_wrap' => '<ul>%3$s</ul>',
+    'depth' => 2,
+    'walker' => ''
   );
+  $options = wp_parse_args( $args, $defaults);
+  wp_nav_menu($options);
 }
 
 
@@ -111,7 +98,6 @@ function mind_fix_svg_upload_error($mimes) {
 function mind_login_logo_url($url) {
 	return '"' . home_url() . '"';
 }
-
 add_filter( 'login_headerurl', 'mind_login_logo_url' );
 
 
@@ -267,18 +253,17 @@ function remove_category_rel_from_category_list($thelist)
 }
 
 // Add page slug to body class, love this - Credit: Starkers Wordpress Theme
-function add_slug_to_body_class($classes)
-{
+function add_slug_to_body_class( $classes ) {
     global $post;
-    if (is_home()) {
-        $key = array_search('blog', $classes);
-        if ($key > -1) {
-            unset($classes[$key]);
+    if ( is_home() ) {
+        $key = array_search( 'blog', $classes, true );
+        if ( $key > -1 ) {
+            unset( $classes[$key] );
         }
-    } elseif (is_page()) {
-        $classes[] = sanitize_html_class($post->post_name);
-    } elseif (is_singular()) {
-        $classes[] = sanitize_html_class($post->post_name);
+    } elseif ( is_page() ) {
+        $classes[] = sanitize_html_class( $post->post_name );
+    } elseif ( is_singular() ) {
+        $classes[] = sanitize_html_class( $post->post_name );
     }
 
     return $classes;
@@ -330,8 +315,7 @@ function my_remove_recent_comments_style()
 }
 
 // Pagination for paged posts, Page 1, Page 2, Page 3, with Next and Previous Links, No plugin
-function mindwp_pagination()
-{
+function mindwp_pagination() {
     global $wp_query;
     $big = 999999999;
     echo paginate_links(array(
@@ -345,8 +329,7 @@ function mindwp_pagination()
     ));
 }
 
-function mindblank_excerpt_length($length)
-{
+function mindblank_excerpt_length($length) {
     return 20;
 }
 
@@ -354,30 +337,26 @@ add_filter('excerpt_length', 'mindblank_excerpt_length', 999);
 
 
 // Custom View Article link to Post
-function mind_blank_view_article($more)
-{
+function mind_blank_view_article($more) {
     global $post;
     return '...';
 }
 
 
 // Remove 'text/css' from our enqueued stylesheet
-function mind_style_remove($tag)
-{
+function mind_style_remove($tag) {
     return preg_replace('~\s+type=["\'][^"\']++["\']~', '', $tag);
 }
 
 // Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail
-function remove_thumbnail_dimensions($html)
-{
+function remove_thumbnail_dimensions($html){
     $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
     return $html;
 }
 
 
 // Threaded Comments
-function enable_threaded_comments()
-{
+function enable_threaded_comments(){
     if (!is_admin()) {
         if (is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
             wp_enqueue_script('comment-reply');

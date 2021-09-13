@@ -117,7 +117,6 @@ header.top-header {
   }
 
   nav.header-menu {
-
     ul {
       margin: 0;
       padding: 0;
@@ -544,40 +543,41 @@ p.wp-caption-text {
   font-size: .9em;
   margin: 0 0 15px 0;
 }
-
-section.brand, section.archive-header {
-  background-size: cover;
-  position: relative;
-  padding-top: 150px;
-  margin-bottom: 30px;
-  color: $light;
+section {
+  &.brand {
+    background-size: cover;
+    position: relative;
+    padding-top: 150px;
+    margin-bottom: 30px;
+    color: $light;
+  }
   &.archive-header {
-    background: linear-gradient(90deg, $primary, $secondary);
-  }
-}
-section.blog, section.post {
-  article {
-    span.posted-date {
-      font-size: .8em;
-      margin: 4px 0;
-    }
-    span.author-name {
-      font-size: .8em;
-      margin: 4px 0;
-      display: block;
-    }
-    &.sticky {
-      .card-body {
-        border-top: 8px solid $secondary;
-      }
 
-    }
-    .categories {
-      line-height: 1.1em;
-    }
   }
-  a.view-article {
-    display: none;
+  &.blog, &.post {
+    article {
+      span.posted-date {
+        font-size: .8em;
+        margin: 4px 0;
+      }
+      span.author-name {
+        font-size: .8em;
+        margin: 4px 0;
+        display: block;
+      }
+      &.sticky {
+        .card-body {
+          border-top: 8px solid $secondary;
+        }
+
+      }
+      .categories {
+        line-height: 1.1em;
+      }
+    }
+    a.view-article {
+      display: none;
+    }
   }
 }
 
@@ -586,30 +586,7 @@ aside.sidebar {
 
 }
 
-blockquote {
-  margin-left: 20px;
-  padding-left: 15px;
-  border-left: 3px solid $primary;
-  font-style: italic;
-  cite {
-    display: block;
-    font-weight: bold;
-    text-align: right;
-    font-size: .9em;
-    font-style: normal;
-    margin-top: 10px;
-  }
-}
-address {
-  margin-bottom: 1rem;
-    font-style: normal;
-    line-height: inherit;
-    background: #F8F8F8;
-    padding: 15px;
-    line-height: 1.1em;
-    text-transform: uppercase;
-    font-family: monospace;
-}
+
 code {
   color: $gray-800;
 }
@@ -671,5 +648,17 @@ code {
 }
 
 
-.video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
-.video-container iframe, .video-container object, .video-container embed, .video-container video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  iframe, object, embed, video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+}

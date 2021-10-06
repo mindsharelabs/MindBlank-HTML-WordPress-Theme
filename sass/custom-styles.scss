@@ -382,79 +382,6 @@ header.blog-header {
   background-blend-mode: luminosity;
 }
 
-article.team {
-  .team-thumbnail {
-    img {
-      border: 5px solid $primary;
-    }
-  }
-  .icons {
-    display: flex;
-    justify-content: flex-start;
-    a {
-      text-decoration: none;
-      display: block;
-      padding: 5px;
-    }
-  }
-}
-
-section.archive-team {
-  .card {
-    border-top: 0;
-    -webkit-box-shadow: none;
-    box-shadow:  none;
-    text-align: center;
-    .card-header {
-      border: none;
-      padding: 15px 45px;
-      @include transition(200ms);
-      img {
-        border: 5px solid $primary;
-        @include transition(200ms);
-      }
-      &:hover {
-        padding: 0px 30px;
-        @include transition(100ms);
-        img {
-          border: 10px solid $primary;
-          @include transition(100ms);
-        }
-      }
-    }
-    .card-body {
-      h3.team-name {
-        font-weight: 800;
-        a {
-          text-decoration: none;
-          font-size: .85em;
-        }
-      }
-      h4.team-title {
-        font-size: .8em;
-        color: $dark;
-        display: block;
-        min-height: 80px;
-        line-height: 20px;
-      }
-      .team-bio {
-        font-size: .85em;
-        line-height: 1.1em;
-        color: $dark;
-      }
-      .icons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        a {
-          text-decoration: none;
-          display: block;
-          padding: 5px;
-        }
-      }
-    }
-  }
-}
 #comments {
   ul {
     list-style: none;
@@ -505,13 +432,6 @@ footer.footer {
       }
     }
   }
-}
-
-.bypostauthor > article .fn:before {
-  content: "\f408";
-  margin: 0 2px 0 -2px;
-  position: relative;
-  top: -1px;
 }
 
 /* single post */

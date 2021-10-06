@@ -51,9 +51,19 @@ function mapi_block_wrapper( $block_content, $block ) {
 
 
 
-
 }
 
+
+add_action('wp_footer', function() {
+  if(function_exists('the_field')) :
+    the_field('footer_scripts', 'options');
+  endif;
+});
+add_action('wp_header', function() {
+  if(function_exists('the_field')) :
+    the_field('header_scripts', 'options');
+  endif;
+});
 
 add_action( 'pre_get_posts', function ($query) {
     if ( !is_admin() && $query->is_main_query() && is_post_type_archive( 'team' ) ) {
@@ -114,3 +124,72 @@ function bootstrap_styles_for_gravityforms_fields($content, $field, $value, $lea
 	return $content;
 
 } // End bootstrap_styles_for_gravityforms_fields()
+
+
+
+
+if( function_exists('acf_add_local_field_group') ):
+
+acf_add_local_field_group(array(
+	'key' => 'group_615e22b23c24f',
+	'title' => 'Additional Scripts',
+	'fields' => array(
+		array(
+			'key' => 'field_615e22bde1731',
+			'label' => 'Header Scripts',
+			'name' => 'header_scripts',
+			'type' => 'textarea',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'maxlength' => '',
+			'rows' => '',
+			'new_lines' => '',
+		),
+		array(
+			'key' => 'field_615e22c2e1732',
+			'label' => 'Footer Scripts',
+			'name' => 'footer_scripts',
+			'type' => 'textarea',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'maxlength' => '',
+			'rows' => '',
+			'new_lines' => '',
+		),
+	),
+	'location' => array(
+		array(
+			array(
+				'param' => 'options_page',
+				'operator' => '==',
+				'value' => 'website-settings',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => true,
+	'description' => '',
+));
+
+endif;

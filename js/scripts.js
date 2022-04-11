@@ -6,7 +6,10 @@
         var windowWidth = $(window).width();
 
 				if(windowWidth < 576) {
-					var menuWidth = windowWidth - 50;
+					$(document).on('click', 'li.menu-item-has-children:not(.expanded)', function(e) {
+						e.preventDefault();
+						$(this).toggleClass('expanded');
+					})
 				} else if(windowWidth < 992) {
 					var menuWidth = windowWidth/2;
 				} else if(windowWidth < 1200) {
@@ -24,20 +27,29 @@
 	        }
 		    });
 
-				$(document).on('click', '#mobileMenuToggle', function() {
-					$('#mobileMenu').css('height', '100vh');
-					setTimeout( function() {
-            $('#mobileMenu').toggleClass('show');
-       		}, 100);
+
+				$(document).on('click', '#mobileMenuToggle', function(e) {
+
+					if($('#mobileMenu').hasClass('show')) {
+						$('#mobileMenu').css('height', '0px');
+						setTimeout( function() {
+	            $('#mobileMenu').toggleClass('show');
+	       		}, 100);
+					} else {
+						$('#mobileMenu').css('height', '100vh');
+						setTimeout( function() {
+	            $('#mobileMenu').toggleClass('show');
+	       		}, 100);
+					}
+
 
 
 					$(this).toggleClass('active');
 
 				});
-				$(document).on('click', '#mobileMenu li.menu-item-has-children', function(e) {
-					// e.preventDefault();
-					$(this).toggleClass('expanded');
-				})
+
+
+
 
 
         jQuery('body').addClass('fade-in');

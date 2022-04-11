@@ -241,15 +241,12 @@ header.top-header {
   height: 0;
   overflow: hidden;
   z-index: 19999;
-  background: $primary;
+  background: $light;
   @include transition(100ms);
   &.show {
     height: 100vh;
     opacity: 1;
     @include transition(200ms);
-  }
-  .mobile-logo {
-
   }
   ul {
     padding: 30px 0;
@@ -261,6 +258,7 @@ header.top-header {
     width: 90%;
     margin: 0 auto;
     list-style: none;
+    text-align: center;
     li {
       display: block;
       width: 100%;
@@ -270,36 +268,79 @@ header.top-header {
         padding: 8px 16px;
         display: block;
         width: 100%;
-        color: $light;
+        color: $primary;
+        font-size: 24px;
+        font-weight: 800;
         text-decoration: none;
         @include transition(200ms);
         &:hover {
-          color: $light;
-          text-decoration: underline;
+          color: $primary;
+          text-decoration: none;
           @include transition(100ms);
         }
       }
-      ul.sub-menu {
-        max-height: 0;
-        overflow: hidden;
-        padding: 0;
-        width: unset;
-        display: flex;
-        flex-direction: column;
-        margin: 0 0 10px 20px;
-        background: darken($primary, 20%);
-        li {
-          flex: 1;
-          a {
-            background: none;
+
+      &.menu-item-has-children, &.page_item_has_children {
+        position: relative;
+        & > a {
+          position: relative;
+          &:after {
+            font-family: "Font Awesome 6 Pro";
+            font-weight: 400;
+            content: "\f107";
+            display: none;
+            margin-left: 5px;
+            color: $primary;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+
           }
         }
-      }
-      &.expanded {
-        ul.sub-menu {
-          max-height: 900px;
-          @include transition(200ms);
+        svg {
+          position: absolute;
+          top: 12px;
+          margin-left: 10px;
+
         }
+        ul.sub-menu, ul.children {
+          margin: 0;
+          padding: 0;
+          max-height: 0;
+          overflow: hidden;
+          padding: 0;
+          width: unset;
+          display: flex;
+          flex-direction: column;
+          font-size: .9em;
+          line-height: 1em;
+          text-align: center;
+          li {
+            flex: 1;
+            a {
+              font-weight: 400;
+              background: none;
+              font-size: 20px;
+            }
+          }
+        }
+        &.expanded {
+          margin-bottom: 30px;
+          & > a {
+
+            font-size: 20px;
+            &:last-child {
+              margin-bottom: 30px;
+            }
+          }
+          ul.sub-menu {
+
+            max-height: 900px;
+            @include transition(200ms);
+          }
+        }
+
       }
     }
   }

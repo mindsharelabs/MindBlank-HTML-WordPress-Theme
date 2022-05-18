@@ -54,6 +54,22 @@ function mapi_block_wrapper( $block_content, $block ) {
 }
 
 
+
+add_filter( 'wp_nav_menu_objects', function ( $items ) {
+
+  $parents = array();
+  foreach ( $items as $item ) {
+    if(in_array('menu-item-has-children', $item->classes)) :
+      $item->title = $item->title . '<i class="ms-2 fal fa-angle-down"></i>';
+      mapi_write_log($item);
+    endif;
+  }
+  return $items;
+});
+
+
+
+
 add_action('wp_footer', function() {
   if(function_exists('the_field')) :
     the_field('footer_scripts', 'options');

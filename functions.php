@@ -13,8 +13,6 @@ include 'inc/content-functions.php';
 include 'mindevents/mindevents.php';
 include 'inc/cpt.php';
 include 'inc/acf-functions.php';
-include 'inc/aq_resize.php';
-
 
 
 /*------------------------------------*\

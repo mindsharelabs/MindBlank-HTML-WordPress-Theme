@@ -37,7 +37,7 @@ $s_query = get_search_query();
                     echo sprintf('%s ' . $post_type_label . ' result(s) for ', $posts->found_posts) . '"' . $s_query . '"';
                   echo '</h3></div>';
                   while($posts->have_posts()) : $posts->the_post();
-                    get_template_part('loop-search'); //make sure there is a file named loop-[post type].php that gets used for all archive templates.
+                    get_template_part('loop'); //make sure there is a file named loop-[post type].php that gets used for all archive templates.
                   endwhile;
                 endif; //End if Have Posts
 

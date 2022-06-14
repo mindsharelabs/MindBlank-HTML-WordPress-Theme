@@ -28,13 +28,23 @@
 <div id="main-panel">
 <?php
 
-include 'layout/top-header.php';
-if(is_search()) :
-  include 'layout/search-header.php';
-elseif(is_404()) :
+if ( is_front_page() && is_home() ) {
+// Default homepage
 
-elseif(is_archive()) :
-  include 'layout/archive-header.php';
-else :
-  include 'layout/page-header.php';
-endif;
+} elseif ( is_front_page()){
+// Static homepage
+
+} elseif ( is_home()){
+// Blog page
+
+} else {
+  echo '<div class="container">';
+  echo '<div class="row">';
+  echo '<div class="col-12">';
+    echo '<h1 class="page-title display-1">' . get_the_title() . '</h1>';
+  echo '</div>';
+  echo '</div>';
+  echo '</div>';
+// Everything else
+
+}

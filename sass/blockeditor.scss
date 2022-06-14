@@ -66,35 +66,6 @@ blockquote {
     padding: 15px;
   }
 }
-.wc-block-featured-category {
-  .wp-block-button {
-    a{
-      @extend .btn;
-      @extend .btn-light;
-    }
-
-  }
-}
-.wc-block-product-search {
-  form {
-    margin-bottom: 10px;
-    label {
-      text-align: center;
-      font-size: 1.2em;
-    }
-  }
-  .wc-block-product-search__fields {
-    @extend .input-group;
-    input {
-      @extend .form-control;
-    }
-  }
-}
-.wc-block-grid__product-image {
-  img {
-    height: auto;
-  }
-}
 .wp-block-button {
   margin-top: 2em;
   margin-bottom: 2em;

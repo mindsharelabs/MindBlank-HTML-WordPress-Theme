@@ -10,7 +10,6 @@ define('THEME_VERSION', '3.1.0');
 \*------------------------------------*/
 
 include 'inc/content-functions.php';
-include 'mindevents/mindevents.php';
 include 'inc/cpt.php';
 include 'inc/acf-functions.php';
 
@@ -207,16 +206,19 @@ function mindblank_styles()
     wp_register_style('mindblankcssmin', get_template_directory_uri() . '/css/style.css', array(), THEME_VERSION);
     wp_enqueue_style('mindblankcssmin');
 
-    wp_register_style('typekit-fonts', 'https://use.typekit.net/iax7txx.css', array(), THEME_VERSION);
+
+
+    wp_register_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@300;400;700&display=swap', array(), THEME_VERSION);
 		add_action('wp_head', function() {
-			echo '<link rel="preload" href="https://use.typekit.net/">';
+			echo '<link rel="preconnect" href="https://fonts.googleapis.com">';
+      echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>';
 		});
 
 
 }
 
 function mind_add_footer_styles() {
-		wp_enqueue_style('typekit-fonts');
+		wp_enqueue_style('google-fonts');
 };
 add_action( 'get_footer', 'mind_add_footer_styles' );
 

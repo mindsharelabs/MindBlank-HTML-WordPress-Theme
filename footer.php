@@ -39,18 +39,7 @@
 		include get_template_directory() . '/img/menuToggle.svg';
 	echo '</nav>';
 
- ?>
+wp_footer(); ?>
 
-
-		<?php wp_footer(); ?>
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-DZB2VPQFWG"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-
-		  gtag('config', 'G-DZB2VPQFWG');
-		</script>
 	</body>
 </html>

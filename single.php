@@ -1,11 +1,18 @@
 <?php
 get_header();
-if(have_posts()) : while(have_posts()) : the_post(); ?>
-  <main role="main" aria-label="Content">
-    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-        <?php the_content(); ?>
-    </article>
-  </main>
-<?php endwhile; endif;
 
+if(have_posts()) :
+  echo '<div role="main" aria-label="Content" class="container">';
+    echo '<div class="row">';
+      echo '<article id="page-' . get_the_id() . '" class="' . esc_attr( implode( ' ', get_post_class( 'col-12', $post->ID ) ) )  . '" itemscope="" itemtype="http://schema.org/Article">';
+
+      while(have_posts()) :
+        the_post();
+          the_content();
+      endwhile;
+
+      echo '</div>';
+    echo '</div>';
+  echo '</div>';
+endif;
 get_footer();

@@ -32,6 +32,22 @@
 //xl: 1200px
 @media (max-width: 576px) {
 
+.front-page {
+  .title-card {
+    width: 80%;
+    left: 10%;
+    right: 10%;
+  }
+}
+
+    
+
+
+  body.admin-bar {
+    header.header {
+      margin-top: 46px;
+    }
+  }
   footer.footer {
     ul {
       flex-direction: column;
@@ -42,7 +58,18 @@
 
 // Small styles - default: 480px <= x <= 991px
 @media (min-width: 576px) and (max-width: 992px) {
-
+  .front-page {
+    .title-card {
+      width: 70%;
+      left: 15%;
+      right: 15%;
+    }
+  }
+  body.admin-bar {
+    header.header {
+      margin-top: 46px;
+    }
+  }
   footer.footer {
     ul {
       flex-direction: column;
@@ -54,7 +81,18 @@
 
 // Medium styles - default: 992px <= x <= 1199px
 @media (min-width: 992px) and (max-width: 1200px) {
-
+  .front-page {
+    .title-card {
+      width: 60%;
+      left: 20%;
+      right: 20%;
+    }
+  }
+  body.admin-bar {
+    header.header {
+      margin-top: 32px;
+    }
+  }
   footer.footer {
     ul {
       flex-direction: row;
@@ -65,7 +103,18 @@
 
 // Large styles - default: 1200px <= x
 @media (min-width: 1200px) {
-
+  .front-page {
+    .title-card {
+      width: 50%;
+      left: 25%;
+      right: 25%;
+    }
+  }
+  body.admin-bar {
+    header.header {
+      margin-top: 32px;
+    }
+  }
   footer.footer {
     ul {
       flex-direction: row;

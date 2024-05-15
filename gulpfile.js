@@ -1,11 +1,14 @@
-const gulp = require('gulp');
-const sass = require('gulp-sass')(require('node-sass'));
-const sourcemaps = require('gulp-sourcemaps');
-const del = require('del');
+import gulp from "gulp";
 
+import dartSass from 'sass'
+import gulpSass from 'gulp-sass'
+const sass = gulpSass(dartSass);
+
+import sourcemaps from 'gulp-sourcemaps';
+import {deleteAsync} from 'del';
 
 gulp.task('theme-styles', () => {
-    return gulp.src('sass/style.scss')
+    return gulp.src('sass/styles.scss')
       .pipe(sourcemaps.init())
       .pipe(sass({
         outputStyle: 'compressed'//nested, expanded, compact, compressed
@@ -25,10 +28,11 @@ gulp.task('404-styles', () => {
 });
 
 gulp.task('clean', () => {
-    return del([
-        'inc/css/block-styles.css',
+    return deleteAsync([
+        'inc/css/block-style.css',
+        'inc/css/style.css',
     ]);
-});
+}); 
 
 gulp.task('watch', () => {
   gulp.watch('sass/*.scss', (done) => {
@@ -36,4 +40,4 @@ gulp.task('watch', () => {
   });
 });
 
-gulp.task('default', gulp.series(['clean', 'theme-styles', '404-styles', 'watch']));
+gulp.task('default', gulp.series(['theme-styles', '404-styles', 'watch']));

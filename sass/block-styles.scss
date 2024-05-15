@@ -1,0 +1,42 @@
+.mind-staff-cards {
+	a {
+		text-align: center;
+	}
+	.card-body {
+		z-index: -1;
+		margin-top: -100px;
+	    border: 1px solid $primary;
+	    border-radius: 20px;
+	    padding-top: 115px;
+
+		h3.staff-name {
+			color: $dark!important;
+			font-weight: bold;
+		}
+		.staff-title {
+			font-style: italic;
+			font-size: .9em;
+			border-top: 1px solid $primary;
+			border-bottom: 1px solid $primary;
+			margin: 0;
+			padding: 5px 0;
+		}
+		.staff-bio { 
+			text-align: center;
+			font-size: .9em;
+			padding: 10px;;
+		}
+	}
+}
+
+.accordion {
+	.accordion-item { 
+		.accordion-header {
+			font-family: 'Open Sans', sans-serif !important;
+			button {
+				font-size: 20px;
+				font-family: 'Open Sans', sans-serif !important;
+			}
+		}
+	}
+}

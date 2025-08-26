@@ -9,10 +9,7 @@ define('THEME_VERSION', '0.0.1');
     External Modules/Files
 \*------------------------------------*/
 
-
-
-
-
+@include 'inc/bootstrap-conector.php';
 
 /*------------------------------------*\
     Cusomizer Support

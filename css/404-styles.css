@@ -1,6 +1,70 @@
+@charset "UTF-8";
+/* Bridge WordPress theme.json → runtime CSS variables (single source of truth) */
+:root {
+  /* Brand aliases used across the theme */
+  --brand-primary: var(--wp--preset--color--primary);
+  --brand-secondary: var(--wp--preset--color--secondary);
+  --brand-success: var(--wp--preset--color--success);
+  --brand-info: var(--wp--preset--color--info);
+  --brand-warning: var(--wp--preset--color--warning);
+  --brand-danger: var(--wp--preset--color--danger);
+  --brand-light: var(--wp--preset--color--light);
+  --brand-dark: var(--wp--preset--color--dark);
+  /* Bootstrap variable bridges (override at runtime) */
+  --bs-primary: var(--wp--preset--color--primary);
+  --bs-secondary: var(--wp--preset--color--secondary);
+  --bs-success: var(--wp--preset--color--success);
+  --bs-info: var(--wp--preset--color--info);
+  --bs-warning: var(--wp--preset--color--warning);
+  --bs-danger: var(--wp--preset--color--danger);
+  --bs-light: var(--wp--preset--color--light);
+  --bs-dark: var(--wp--preset--color--dark);
+  /* Body text/background bridges */
+  --bs-body-bg: var(--wp--preset--color--background, #fff);
+  --bs-body-color: var(--wp--preset--color--foreground, #212529);
+}
+
+/* Accordion colors driven by theme.json via CSS variables */
+.accordion {
+  --bs-accordion-bg: color-mix(in oklab, var(--bs-primary), white 40%);
+  --bs-accordion-btn-color: var(--bs-dark);
+  --bs-accordion-btn-active-bg: color-mix(in oklab, var(--bs-primary), white 20%);
+  --bs-accordion-btn-active-color: var(--bs-dark);
+}
+
+/* Link styles driven by theme.json */
+a {
+  color: var(--bs-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+a:hover {
+  color: color-mix(in oklab, var(--bs-primary), black 20%);
+  text-decoration: underline;
+}
+
+.btn-link:hover {
+  color: var(--bs-light);
+}
+
+/* Ensure bridges apply inside the block editor canvas iframe */
+.editor-styles-wrapper .is-root-container {
+  --bs-primary: var(--wp--preset--color--primary);
+  --bs-secondary: var(--wp--preset--color--secondary);
+  --bs-success: var(--wp--preset--color--success);
+  --bs-info: var(--wp--preset--color--info);
+  --bs-warning: var(--wp--preset--color--warning);
+  --bs-danger: var(--wp--preset--color--danger);
+  --bs-light: var(--wp--preset--color--light);
+  --bs-dark: var(--wp--preset--color--dark);
+  --bs-body-bg: var(--wp--preset--color--background, #fff);
+  --bs-body-color: var(--wp--preset--color--foreground, #212529);
+}
+
 .lost-page {
   min-height: 500px;
-  background: linear-gradient(90deg, #00AFD7, #C4D600);
+  background: linear-gradient(90deg, var(--bs-primary), var(--bs-secondary));
   padding: 30px 50px;
   position: relative;
   width: 100%;
@@ -134,7 +198,7 @@
 .lost-page .box__ghost .box__ghost-container .box__ghost-eyes .box__eye-left {
   width: 12px;
   height: 12px;
-  background: #00AFD7;
+  background: var(--bs-primary);
   border-radius: 50%;
   margin: 0 10px;
   position: absolute;
@@ -143,7 +207,7 @@
 .lost-page .box__ghost .box__ghost-container .box__ghost-eyes .box__eye-right {
   width: 12px;
   height: 12px;
-  background: #00AFD7;
+  background: var(--bs-primary);
   border-radius: 50%;
   margin: 0 10px;
   position: absolute;
@@ -167,12 +231,12 @@
 .lost-page .box__ghost .box__ghost-container .box__ghost-bottom div:nth-child(2n) {
   top: -12px;
   margin: 0 0px;
-  border-top: 15px solid #00AFD7;
+  border-top: 15px solid var(--bs-primary);
   background: transparent;
 }
 .lost-page .box__ghost .box__ghost-shadow {
   height: 20px;
-  box-shadow: 0 50px 15px 5px #4D4D4D;
+  box-shadow: 0 50px 15px 5px var(--bs-dark);
   border-radius: 50%;
   margin: 0 auto;
   animation: smallnbig 3s ease-in-out infinite;

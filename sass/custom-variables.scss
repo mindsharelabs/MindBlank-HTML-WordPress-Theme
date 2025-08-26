@@ -1,3 +1,4 @@
+@use "sass:string";
 /* Bridge WordPress theme.json → runtime CSS variables (single source of truth) */
 :root {
   /* Brand aliases used across the theme */
@@ -24,6 +25,8 @@
   --bs-body-bg:    var(--wp--preset--color--background, #fff);
   --bs-body-color: var(--wp--preset--color--foreground, #212529);
 }
+
+
 
 // Variables
 //
@@ -88,14 +91,14 @@ $colors: (
 // scss-docs-end colors-map
 
 // Sass aliases for CSS variables
-$primary:   unquote("var(--bs-primary)");
-$secondary: unquote("var(--bs-secondary)");
-$success:   unquote("var(--bs-success)");
-$info:      unquote("var(--bs-info)");
-$warning:   unquote("var(--bs-warning)");
-$danger:    unquote("var(--bs-danger)");
-$light:     unquote("var(--bs-light)");
-$dark:      unquote("var(--bs-dark)");
+$primary:   string.unquote("var(--bs-primary)");
+$secondary: string.unquote("var(--bs-secondary)");
+$success:   string.unquote("var(--bs-success)");
+$info:      string.unquote("var(--bs-info)");
+$warning:   string.unquote("var(--bs-warning)");
+$danger:    string.unquote("var(--bs-danger)");
+$light:     string.unquote("var(--bs-light)");
+$dark:      string.unquote("var(--bs-dark)");
 
 /// Helper mixin to emit fallback + CSS variable
 /// usage: @include color-token(background-color, bs-primary, #0d6efd);

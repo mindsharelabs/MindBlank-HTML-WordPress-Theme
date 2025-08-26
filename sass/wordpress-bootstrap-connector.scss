@@ -1,0 +1,246 @@
+/*
+ * WordPress ⇄ Bootstrap layout connector
+ * --------------------------------------------------------------
+ * Goal: make core block layout classes behave like Bootstrap’s
+ * containers, rows, columns, gutters, alignment utilities, etc.
+ *
+ * Usage: compile this after your Bootstrap imports.
+ * It affects both front‑end and the block editor canvas (scoped).
+ */
+
+@layer bridge;
+
+
+/* ---------------------------------------------
+     * Container widths (alignwide / alignfull)
+     * -------------------------------------------*/
+/* .alignwide ≈ .container (uses WP wide size) */
+
+.alignleft,
+img.alignleft {
+    float: left;
+    text-align: left;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.alignright,
+img.alignright {
+    float: right;
+    text-align: right;
+    padding-left: 10px;
+    padding-bottom: 10px;
+
+}
+
+.alignfull,
+img.alignfull {
+    background-color: red;
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.aligncenter,
+img.aligncenter {
+    float: none;
+    text-align: center;
+    margin: 0 auto;
+
+}
+
+.alignnone,
+img.alignnone {
+    float: none;
+
+}
+
+/* Support constrained layouts acting like a container */
+.is-layout-constrained {
+    max-width: var(--wp--style--layout--content-size, 720px);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--wp--custom--container--paddingX, 1rem);
+    padding-right: var(--wp--custom--container--paddingX, 1rem);
+    width: 100%;
+}
+
+/* ---------------------------------------------
+     * Columns → Row/Cols/Gutters
+     * -------------------------------------------*/
+/* Treat wp columns as a Bootstrap row */
+.wp-block-columns {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+
+    /* Map WP blockGap to Bootstrap gutters */
+    --bs-gutter-x: var(--wp--style--block-gap, 1.5rem);
+    --bs-gutter-y: var(--wp--style--block-gap, 1.5rem);
+
+    /* Row negative margins so child padding forms gutters */
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+    row-gap: var(--bs-gutter-y);
+}
+
+/* Treat each wp column as a Bootstrap column */
+.wp-block-columns>.wp-block-column {
+    position: relative;
+    width: 100%;
+    padding-right: calc(.5 * var(--bs-gutter-x));
+    padding-left: calc(.5 * var(--bs-gutter-x));
+    /* WP sets flex-basis via inline style; we respect that. */
+    min-width: 0;
+    /* prevent overflow when nested */
+}
+
+/* When WP creates a stack-on-mobile variant, keep gap vertical */
+@media (max-width: 599.98px) {
+    .wp-block-columns {
+        row-gap: var(--bs-gutter-y);
+    }
+}
+
+/* ---------------------------------------------
+     * Buttons → Bootstrap buttons
+     * -------------------------------------------*/
+.wp-block-button .wp-block-button__link {
+    /* Default to .btn.btn-primary semantics */
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: var(--bs-btn-border-width, 1px) solid var(--bs-btn-border-color, transparent);
+    padding: .5rem 1rem;
+    border-radius: var(--bs-border-radius, .375rem);
+    background-color: var(--bs-primary);
+    color: var(--bs-btn-color, #fff);
+    text-decoration: none;
+}
+
+.wp-block-button .wp-block-button__link:hover {
+    background-color: color-mix(in oklab, var(--bs-primary), black 12%);
+    text-decoration: none;
+}
+
+/* Outline style if author uses WP's outline variation */
+.is-style-outline .wp-block-button__link {
+    background-color: transparent;
+    border-color: var(--bs-primary);
+    color: var(--bs-primary);
+}
+
+.is-style-outline .wp-block-button__link:hover {
+    background-color: var(--bs-primary);
+    color: var(--bs-btn-color, #fff);
+}
+
+/* ---------------------------------------------
+     * Images & alignment → Bootstrap floats
+     * -------------------------------------------*/
+.wp-block-image .alignleft,
+.alignleft {
+    float: left;
+    margin-right: 1rem;
+}
+
+.wp-block-image .alignright,
+.alignright {
+    float: right;
+    margin-left: 1rem;
+}
+
+.wp-block-image .aligncenter,
+.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive images (Bootstrap style) */
+.wp-block-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ---------------------------------------------
+     * Embeds → Bootstrap .ratio helpers
+     * -------------------------------------------*/
+.wp-block-embed__wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* default to 16:9 */
+    aspect-ratio: 16 / 9;
+}
+
+.wp-block-embed__wrapper iframe,
+.wp-block-embed__wrapper video,
+.wp-block-embed__wrapper object,
+.wp-block-embed__wrapper embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ---------------------------------------------
+     * Buttons group & generic flex layouts → gap mapping
+     * -------------------------------------------*/
+.wp-block-buttons,
+.is-layout-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--wp--style--block-gap, .5rem);
+}
+
+/* ---------------------------------------------
+     * Separators & Spacers
+     * -------------------------------------------*/
+.wp-block-separator {
+    border: 0;
+    border-top: 1px solid var(--bs-border-color, #dee2e6);
+    opacity: 1;
+}
+
+.wp-block-spacer {
+    display: block;
+    width: 100%;
+}
+
+/* ---------------------------------------------
+     * Utility parity (text alignment)
+     * -------------------------------------------*/
+.has-text-align-center {
+    text-align: center !important;
+}
+
+.has-text-align-right {
+    text-align: right !important;
+}
+
+.has-text-align-left {
+    text-align: left !important;
+}
+
+/* ---------------------------------------------
+     * Container helper when authors add .container class in blocks
+     * -------------------------------------------*/
+.container {
+    max-width: var(--wp--style--layout--wide-size, 1140px);
+    padding-left: var(--wp--custom--container--paddingX, 1rem);
+    padding-right: var(--wp--custom--container--paddingX, 1rem);
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+/*
+ * Notes:
+ * - We avoid @extend to keep this connector independent of Bootstrap’s compiled class graph.
+ * - Gutters are derived from WordPress’s blockGap to keep editor and front-end consistent.
+ * - .alignfull uses a transform trick so full-bleed works inside centered parents.
+ */

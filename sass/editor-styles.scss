@@ -1,0 +1,70 @@
+/* assets/scss/bootstrap-editor.scss */
+
+/* Use cascade layers to keep priority sane */
+@layer bootstrap;
+ 
+// Configuration
+
+
+@import "custom-variables";
+@import "wordpress-bootstrap-connector";
+
+
+
+
+/* Bridge WP → BS inside the editor as well */
+:root {
+  --bs-primary:   var(--wp--preset--color--primary,   $primary);
+  --bs-secondary: var(--wp--preset--color--secondary, $secondary);
+  --bs-success:   var(--wp--preset--color--success,   $success);
+  --bs-info:      var(--wp--preset--color--info,      $info);
+  --bs-warning:   var(--wp--preset--color--warning,   $warning);
+  --bs-danger:    var(--wp--preset--color--danger,    $danger);
+  --bs-light:     var(--wp--preset--color--light,     $light);
+  --bs-dark:      var(--wp--preset--color--dark,      $dark);
+
+  --bs-body-font-family: var(--wp--preset--font-family--system, -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif);
+  --bs-body-color:       var(--wp--preset--color--foreground, $body-color);
+  --bs-body-bg:          var(--wp--preset--color--background, #fff);
+}
+
+/* Scope to the editor canvas only */
+.editor-styles-wrapper .is-root-container {
+  @layer bootstrap {
+    @import "bootstrap/functions";
+    @import "bootstrap/variables";
+    @import "bootstrap/maps";
+    @import "bootstrap/mixins";
+
+    /* Keep this lean */
+    @import "bootstrap/reboot";      /* safe base, scoped */
+    @import "bootstrap/containers";  /* optional but helpful */
+    @import "bootstrap/grid";        /* rows/cols/offsets/gutters */
+    @import "bootstrap/utilities";   /* spacing, display, flex, text, sizing */
+
+    /* Optional: buttons so the Button block previews close to front-end */
+    @import "bootstrap/buttons";
+  }
+
+  /* Tiny glue: make WP Button look like .btn in editor */
+  .wp-block-button .wp-block-button__link {
+    @extend .btn;
+    @extend .btn-primary;
+  }
+
+  /* Helpful preview widths when authors add .container */
+  .container {
+    max-width: var(--wp--style--layout--wide-size, 1140px);
+    padding-right: var(--wp--custom--container--paddingX, 1rem);
+    padding-left:  var(--wp--custom--container--paddingX, 1rem);
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+/* Optional: keep Gutenberg chrome untouched */
+.interface-interface-skeleton,
+.edit-post-sidebar,
+.block-editor-block-list__layout {
+  /* intentionally empty — Bootstrap is scoped above */
+}

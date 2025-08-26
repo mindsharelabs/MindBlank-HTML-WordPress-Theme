@@ -17,6 +17,16 @@ gulp.task('theme-styles', () => {
       .pipe(gulp.dest('./css/'))
 });
 
+gulp.task('editor-styles', () => {
+    return gulp.src('sass/editor-styles.scss')
+      .pipe(sourcemaps.init())
+      .pipe(sass({
+        outputStyle: 'compressed'//nested, expanded, compact, compressed
+      }).on('error', sass.logError))
+      .pipe(sourcemaps.write('.'))
+      .pipe(gulp.dest('./css/'))
+});
+
 gulp.task('404-styles', () => {
     return gulp.src('sass/404-styles.scss')
       .pipe(sourcemaps.init())
@@ -30,6 +40,8 @@ gulp.task('404-styles', () => {
 gulp.task('clean', () => {
     return deleteAsync([
         'inc/css/block-style.css',
+        'inc/css/editor-styles.css',
+        'inc/css/404-styles.css',
         'inc/css/style.css',
     ]);
 }); 
@@ -40,4 +52,4 @@ gulp.task('watch', () => {
   });
 });
 
-gulp.task('default', gulp.series(['theme-styles', '404-styles', 'watch']));
+gulp.task('default', gulp.series(['theme-styles', 'editor-styles', '404-styles', 'watch']));

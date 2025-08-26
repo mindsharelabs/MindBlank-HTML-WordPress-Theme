@@ -1,28 +1,21 @@
-<?php
-get_header();
-if(have_posts()) :
-    $classes = get_post_class( 'container', get_the_ID());
-    echo '<article class="' . implode(' ', $classes) . '">';
-        echo '<div class="row">';
-            echo '<div class="col-12">';
-                echo '<h1 class="page-title">' . get_the_title() . '</h1>';
-            echo '</div>';
-        echo '</div>';
-        echo '<div class="row">';
-        
-            while(have_posts()) : the_post();
-                the_content();
-            endwhile;
-        
-        echo '</div>';
-    echo '</article>';
-else :
-    echo '<div class="container">';
-        echo '<div class="row">';
-            echo '<div class="col">';
-                echo '<h2>There is nothing here.</h2>';
-            echo '</div>';
-        echo '</div>';
-    echo '</div>';    
-endif;
-get_footer();
+<?php get_header();?>
+
+<main id="primary" class="site-main">
+<?php if ( have_posts() ) : ?>
+  <?php while ( have_posts() ) : the_post(); ?>
+    <?php $classes = get_post_class( 'entry alignwide container' ); ?>
+
+    <article id="post-<?php the_ID(); ?>" class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
+      <header class="entry-header">
+        <h1 class="entry-title wp-block-post-title"><?php the_title(); ?></h1>
+      </header>
+
+      <div class="entry-content">
+        <?php  the_content(); ?>
+      </div>
+    </article>
+  <?php endwhile; ?>
+<?php endif; ?>
+</main>
+
+<?php get_footer();

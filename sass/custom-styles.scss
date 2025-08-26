@@ -34,7 +34,7 @@ a {
 }
 
 a {
-  color: darken($primary, 20%);
+  color: color-mix(in oklab, var(--bs-primary), --bs-dark 20%);
   text-decoration: none;
   @include transition(400ms);
   &:hover {
@@ -117,7 +117,7 @@ nav {
           font-weight: 500;
           @include transition(250ms);
           &:hover {
-            color: darken($primary, 20%);
+            color: color-mix(in oklab, var(--bs-primary), --bs-dark 20%);
             @include transition(50ms);
           }
         }
@@ -149,7 +149,7 @@ nav {
           font-weight: 500;
           @include transition(250ms);
           &:hover {
-            background-color: darken($primary, 20%);
+            background-color: color-mix(in oklab, var(--bs-primary), --bs-dark 20%);
             @include transition(50ms);
           }
         }
@@ -172,9 +172,9 @@ nav {
               text-transform: uppercase;
               text-decoration: none;
               font-weight: 500;
-              @include transition(250ms);
+              @include transition(250ms);  
               &:hover {
-                background-color: darken($light, 20%);
+                background-color: color-mix(in oklab, var(--bs-light), --bs-dark 20%);
                 @include transition(50ms);
               }
               
@@ -251,28 +251,6 @@ footer.widget-footer {
 
 /* single post */
 
-.alignleft, img.alignleft {
-  float: left;
-  padding-right: 10px;
-  padding-bottom: 10px;
-}
-
-.alignright, img.alignright {
-  float: right;
-  padding-left: 10px;
-  padding-bottom: 10px;
-
-}
-
-.aligncenter, img.aligncenter {
-  float: none;
-
-}
-
-.alignnone, img.alignnone {
-  float: none;
-
-}
 p.wp-caption-text {
   text-align: center;
   font-size: .9em;

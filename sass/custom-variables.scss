@@ -1,3 +1,30 @@
+/* Bridge WordPress theme.json → runtime CSS variables (single source of truth) */
+:root {
+  /* Brand aliases used across the theme */
+  --brand-primary:   var(--wp--preset--color--primary);
+  --brand-secondary: var(--wp--preset--color--secondary);
+  --brand-success:   var(--wp--preset--color--success);
+  --brand-info:      var(--wp--preset--color--info);
+  --brand-warning:   var(--wp--preset--color--warning);
+  --brand-danger:    var(--wp--preset--color--danger);
+  --brand-light:     var(--wp--preset--color--light);
+  --brand-dark:      var(--wp--preset--color--dark); 
+
+  /* Bootstrap variable bridges (override at runtime) */
+  --bs-primary:   var(--wp--preset--color--primary);
+  --bs-secondary: var(--wp--preset--color--secondary);
+  --bs-success:   var(--wp--preset--color--success);
+  --bs-info:      var(--wp--preset--color--info);
+  --bs-warning:   var(--wp--preset--color--warning);
+  --bs-danger:    var(--wp--preset--color--danger);
+  --bs-light:     var(--wp--preset--color--light);
+  --bs-dark:      var(--wp--preset--color--dark);
+
+  /* Body text/background bridges */
+  --bs-body-bg:    var(--wp--preset--color--background, #fff);
+  --bs-body-color: var(--wp--preset--color--foreground, #212529);
+}
+
 // Variables
 //
 // Variables should follow the `$component-state-property-size` formula for
@@ -60,27 +87,25 @@ $colors: (
 ); 
 // scss-docs-end colors-map
 
-$primary:       #00AFD7; 
-$secondary:     #C4D600;
-$success:       $green;
-$info:          $cyan;
-$warning:       $yellow;
-$danger:        $red;
-$light:         #f4f4f4;
-$dark:          #4D4D4D;
+// Sass aliases for CSS variables
+$primary:   unquote("var(--bs-primary)");
+$secondary: unquote("var(--bs-secondary)");
+$success:   unquote("var(--bs-success)");
+$info:      unquote("var(--bs-info)");
+$warning:   unquote("var(--bs-warning)");
+$danger:    unquote("var(--bs-danger)");
+$light:     unquote("var(--bs-light)");
+$dark:      unquote("var(--bs-dark)");
+
+/// Helper mixin to emit fallback + CSS variable
+/// usage: @include color-token(background-color, bs-primary, #0d6efd);
+@mixin color-token($prop, $varName, $fallback) {
+  #{$prop}: $fallback;
+  #{$prop}: var(--#{$varName}, #{$fallback});
+}
 
 
 // scss-docs-start theme-colors-map
-$theme-colors: (
-  "primary":    $primary,
-  "secondary":  $secondary,
-  "success":    $success,
-  "info":       $info,
-  "warning":    $warning,
-  "danger":     $danger,
-  "light":      $light,
-  "dark":       $dark
-);
 // scss-docs-end theme-colors-map
 
 // The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
@@ -121,45 +146,27 @@ $enable-important-utilities:  true;
 //
 // Settings for the `<body>` element.
 
-$body-bg:                   $white;
-$body-color:                $dark;
 $body-text-align:           null;
 
 
 // Accordion
 
-// scss-docs-start accordion-variables
-// $accordion-padding-y:                     1rem ;
-// $accordion-padding-x:                     1.25rem ;
-// $accordion-color:                         var(--#{$prefix}body-color) ;
-$accordion-bg:                               lighten($primary, 40%);
-// $accordion-border-width:                  var(--#{$prefix}border-width) ;
-// $accordion-border-color:                  var(--#{$prefix}border-color) ;
-// $accordion-border-radius:                 var(--#{$prefix}border-radius) ;
-// $accordion-inner-border-radius:           subtract($accordion-border-radius, $accordion-border-width) ;
-
-// $accordion-body-padding-y:                $accordion-padding-y ;
-// $accordion-body-padding-x:                $accordion-padding-x ;
-
-// $accordion-button-padding-y:              $accordion-padding-y ;
-// $accordion-button-padding-x:              $accordion-padding-x ;
-$accordion-button-color:                     $dark;
-// $accordion-button-bg:                     var(--#{$prefix}accordion-bg) ;
-// $accordion-transition:                    $btn-transition, border-radius .15s ease ;
-$accordion-button-active-bg:                 lighten($primary, 20%);
-$accordion-button-active-color:              $dark; 
+/* Accordion colors driven by theme.json via CSS variables */
+.accordion {
+  --bs-accordion-bg:            color-mix(in oklab, var(--bs-primary), white 40%);
+  --bs-accordion-btn-color:     var(--bs-dark);
+  --bs-accordion-btn-active-bg: color-mix(in oklab, var(--bs-primary), white 20%);
+  --bs-accordion-btn-active-color: var(--bs-dark);
+}
 
 // Links
 //
 // Style anchor elements.
 
-$link-color:                              $primary;
-$link-decoration:                         bold;
-$link-shade-percentage:                   20%;
-$link-hover-color:                        shift-color($link-color, $link-shade-percentage);
-$link-hover-decoration:                   underline;
-
-$btn-link-hover-color:                    $light;
+/* Link styles driven by theme.json */
+a { color: var(--bs-primary); font-weight: 700; text-decoration: none; }
+a:hover { color: color-mix(in oklab, var(--bs-primary), black 20%); text-decoration: underline; }
+.btn-link:hover { color: var(--bs-light); }
 
 $border-radius:               0;
 $border-radius-sm:            0;
@@ -244,3 +251,17 @@ $hr-opacity:                  1;
 $btn-border-radius:           20px;
 $btn-border-radius-sm:        30px;
 $btn-border-radius-lg:        40px;
+
+/* Ensure bridges apply inside the block editor canvas iframe */
+.editor-styles-wrapper .is-root-container {
+  --bs-primary:   var(--wp--preset--color--primary);
+  --bs-secondary: var(--wp--preset--color--secondary);
+  --bs-success:   var(--wp--preset--color--success);
+  --bs-info:      var(--wp--preset--color--info);
+  --bs-warning:   var(--wp--preset--color--warning);
+  --bs-danger:    var(--wp--preset--color--danger);
+  --bs-light:     var(--wp--preset--color--light);
+  --bs-dark:      var(--wp--preset--color--dark);
+  --bs-body-bg:    var(--wp--preset--color--background, #fff);
+  --bs-body-color: var(--wp--preset--color--foreground, #212529);
+}

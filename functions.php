@@ -4,7 +4,7 @@
  * URL: https://mind.sh/are | @mindblank
  *
  */
-define('THEME_VERSION', '1.2.5');
+define('THEME_VERSION', '0.0.1');
 /*------------------------------------*\
     External Modules/Files
 \*------------------------------------*/
@@ -28,23 +28,26 @@ add_action( 'customize_register', 'themeslug_customize_register' );
 /*------------------------------------*\
     Theme Support
 \*------------------------------------*/
-if (function_exists('add_theme_support')) {
-    add_image_size( 'loop-thumb', 350, 150, true);
+function mindblank_theme_setup() {
+        //
+    if (function_exists('add_theme_support')) {
+        add_image_size( 'loop-thumb', 350, 150, true);
 
-    // Add Thumbnail Theme Support
-    add_theme_support('post-thumbnails');
+        // Add Thumbnail Theme Support
+        add_theme_support('post-thumbnails');
 
-    // Enables post and comment RSS feed links to head
-    add_theme_support('automatic-feed-links');
+        // Enables post and comment RSS feed links to head
+        add_theme_support('automatic-feed-links');
 
-    // Enable mind support
-    add_theme_support('mind', array('comment-list', 'comment-form', 'search-form', 'gallery', 'caption'));
+        // Enable mind support
+        add_theme_support('mind', array('comment-list', 'comment-form', 'search-form', 'gallery', 'caption'));
 
-    // Localisation Support
-    load_theme_textdomain('mindblank', get_template_directory() . '/languages');
+        // Localisation Support
+        load_theme_textdomain('mindblank', get_template_directory() . '/languages');
 
+    }
 }
-
+add_action('after_theme_setup', 'mindblank_theme_setup'); // Add Theme Support
 
 /*------------------------------------*\
     Script and Style Loading

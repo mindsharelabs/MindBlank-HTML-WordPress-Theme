@@ -1,18 +1,24 @@
-/* assets/scss/bootstrap-editor.scss */
+// ---------------------------------------------
+// Editor stylesheet (Bootstrap-lean)
+// Sass modules MUST be loaded before any rules.
+// ---------------------------------------------
+
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "custom-variables"; 
+@import "bootstrap/maps";
+@import "bootstrap/mixins"; 
+@import "bootstrap/reboot";      // safe base
+@import "bootstrap/containers";  // optional but helpful
+@import "bootstrap/grid";        // rows/cols/offsets/gutters
+@import "bootstrap/utilities";   // spacing, display, flex, text, sizing
+@import "bootstrap/buttons";     // for Button block preview
+@import "wordpress-bootstrap-connector";
 
 /* Use cascade layers to keep priority sane */
 @layer bootstrap;
- 
-// Configuration
 
-
-@import "custom-variables";
-@import "wordpress-bootstrap-connector";
-
-
-
-
-/* Bridge WP → BS inside the editor as well */
+/* Bridge WP → BS inside the editor as well */ 
 :root {
   --bs-primary:   var(--wp--preset--color--primary,   $primary);
   --bs-secondary: var(--wp--preset--color--secondary, $secondary);
@@ -28,24 +34,8 @@
   --bs-body-bg:          var(--wp--preset--color--background, #fff);
 }
 
-/* Scope to the editor canvas only */
+/* Scope to the editor canvas only (our connector already limits layout rules) */
 .editor-styles-wrapper .is-root-container {
-  @layer bootstrap {
-    @import "bootstrap/functions";
-    @import "bootstrap/variables";
-    @import "bootstrap/maps";
-    @import "bootstrap/mixins";
-
-    /* Keep this lean */
-    @import "bootstrap/reboot";      /* safe base, scoped */
-    @import "bootstrap/containers";  /* optional but helpful */
-    @import "bootstrap/grid";        /* rows/cols/offsets/gutters */
-    @import "bootstrap/utilities";   /* spacing, display, flex, text, sizing */
-
-    /* Optional: buttons so the Button block previews close to front-end */
-    @import "bootstrap/buttons";
-  }
-
   /* Tiny glue: make WP Button look like .btn in editor */
   .wp-block-button .wp-block-button__link {
     @extend .btn;
@@ -66,5 +56,5 @@
 .interface-interface-skeleton,
 .edit-post-sidebar,
 .block-editor-block-list__layout {
-  /* intentionally empty — Bootstrap is scoped above */
-}
+  /* intentionally empty — Bootstrap is loaded, but our connector rules focus on the canvas */
+} 

@@ -1,5 +1,5 @@
 //variables
-@import "custom-variables";
+@use "custom-variables" as *; 
 
 .lost-page {
   min-height: 500px;

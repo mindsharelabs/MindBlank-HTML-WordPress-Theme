@@ -99,6 +99,8 @@ $warning:   string.unquote("var(--bs-warning)");
 $danger:    string.unquote("var(--bs-danger)");
 $light:     string.unquote("var(--bs-light)");
 $dark:      string.unquote("var(--bs-dark)");
+$color-contrast-dark: string.unquote("var(--bs-dark)");
+$color-contrast-light: string.unquote("var(--bs-light)"); 
 
 /// Helper mixin to emit fallback + CSS variable
 /// usage: @include color-token(background-color, bs-primary, #0d6efd);
